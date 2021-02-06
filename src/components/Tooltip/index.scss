@@ -1,0 +1,39 @@
+@import 'src/global';
+
+$bg: rgba(0, 0, 0, 0.75);
+
+.pointer {
+  @extend .pointer;
+}
+
+.wrap {
+  @apply absolute;
+
+  z-index: 999;
+  transform: translateX(-50%) translateY(calc(-100% - 0.5rem));
+
+  .tooltip {
+    background-color: $bg;
+    border-radius: 2px;
+    .arrow {
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      @apply absolute block w-4 h-2 overflow-hidden;
+      .content {
+        width: 0.4rem;
+        height: 0.4rem;
+        background-color: $bg;
+        transform: rotate(-45deg);
+        transform-origin: top left;
+        @apply block m-auto;
+      }
+    }
+  }
+
+  .title {
+    min-width: 2rem;
+    font-size: 0.8rem;
+    @apply text-center px-2 py-1 text-white block whitespace-nowrap;
+  }
+}

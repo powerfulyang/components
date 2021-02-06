@@ -1,0 +1,61 @@
+{
+  "name": "@powerfulyang/components",
+  "version": "0.7.23",
+  "description": "react-components",
+  "author": "powerfulyang",
+  "license": "MIT",
+  "repository": "https://github.com/powerfulyang/tools.git",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "style": "dist/es/index.css",
+  "sideEffects": false,
+  "scripts": {
+    "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,json,md}\"",
+    "fix:style": "stylelint --fix \"src/**/*.scss\" --syntax scss",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
+    "build:dev": "rimraf dist && cross-env NODE_ENV=development rollup -c",
+    "watch:build": "rimraf dist && cross-env NODE_ENV=production rollup -c --watch"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "@powerfulyang/hooks": "^0.2.15",
+    "@powerfulyang/utils": "^0.7.14",
+    "classnames": "^2.2.6",
+    "qrious": "^4.0.2",
+    "react-animate-height": "^2.0.23",
+    "react-markdown": "^5.0.3",
+    "react-syntax-highlighter": "^15.4.3",
+    "remark-gfm": "^1.0.0",
+    "rxjs": "^6.6.3"
+  },
+  "devDependencies": {
+    "@powerfulyang/lint": "^0.2.12",
+    "@powerfulyang/node-utils": "^0.2.12",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.1.0",
+    "@rollup/plugin-url": "^6.0.0",
+    "@svgr/rollup": "^5.5.0",
+    "@types/classnames": "^2.2.11",
+    "@types/lodash-es": "^4.17.4",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-syntax-highlighter": "^13.5.0",
+    "autoprefixer": "^10.2.3",
+    "lodash-es": "^4.17.20",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "rollup": "^2.38.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "tailwindcss": "^2.0.2"
+  }
+}
