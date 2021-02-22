@@ -47,7 +47,7 @@
     "@types/react-syntax-highlighter": "^13.5.0",
     "autoprefixer": "^10.2.3",
     "lodash-es": "^4.17.20",
-    "node-sass": "^5.0.0",
+    "sass": "^1.32.8",
     "postcss": "^8.2.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
