@@ -68,3 +68,5 @@ export const Tooltip: FC<Props> = ({ children, title }) => {
     </>
   );
 };
+
+Tooltip.displayName = 'Tooltip';

@@ -1,6 +1,6 @@
 @import 'src/global';
 
-$bg: rgba(0, 0, 0, 0.75);
+$bg: rgba(0, 0, 0, 0.65);
 
 .pointer {
   @extend .pointer;
@@ -14,10 +14,12 @@ $bg: rgba(0, 0, 0, 0.75);
 
   .tooltip {
     background-color: $bg;
+    border: none;
     border-radius: 2px;
     .arrow {
       bottom: -0.5rem;
       left: 50%;
+      z-index: 1000;
       transform: translateX(-50%);
       @apply absolute block w-4 h-2 overflow-hidden;
       .content {
@@ -34,6 +36,6 @@ $bg: rgba(0, 0, 0, 0.75);
   .title {
     min-width: 2rem;
     font-size: 0.8rem;
-    @apply text-center px-2 py-1 text-white block whitespace-nowrap;
+    @apply text-center text-white block whitespace-nowrap;
   }
 }

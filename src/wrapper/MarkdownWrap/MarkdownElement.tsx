@@ -28,7 +28,7 @@ export enum HeadingEnum {
 
 const H1: FC = ({ children }) => {
   return (
-    <h1 className="flex justify-center h-auto m-4">
+    <h1 className="flex justify-center h-auto mt-10">
       <span className="heading1">
         <span className="prefix" />
         <span className="content">{children}</span>
@@ -139,6 +139,7 @@ type Node = {
   children: Node[];
   value: string;
   position: NodePosition;
+  url: string;
 };
 
 export const Paragraph: FC<{ node: Node }> = (props) => {
@@ -159,7 +160,7 @@ export const Paragraph: FC<{ node: Node }> = (props) => {
     const postDate = info[1];
     const wordCount = info[2];
     const viewCount = info[3];
-    const avatar = info[4];
+    const avatar = props.node.children[1].url;
     return (
       <div className="post_info">
         <span className="author">
