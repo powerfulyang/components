@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/components",
-  "version": "0.7.23",
+  "version": "0.7.24",
   "description": "react-components",
   "author": "powerfulyang",
   "license": "MIT",
@@ -24,8 +24,8 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "@powerfulyang/hooks": "^0.2.15",
-    "@powerfulyang/utils": "^0.7.14",
+    "@powerfulyang/hooks": "^0.2.16",
+    "@powerfulyang/utils": "^0.7.15",
     "classnames": "^2.3.1",
     "qrious": "^4.0.2",
     "react-animate-height": "^2.0.23",
@@ -35,8 +35,8 @@
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "^0.2.12",
-    "@powerfulyang/node-utils": "^0.2.12",
+    "@powerfulyang/lint": "^0.2.13",
+    "@powerfulyang/node-utils": "^0.2.13",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@rollup/plugin-url": "^6.0.0",
@@ -47,7 +47,6 @@
     "@types/react-syntax-highlighter": "^13.5.0",
     "autoprefixer": "^10.2.5",
     "lodash-es": "^4.17.21",
-    "sass": "^1.32.8",
     "postcss": "^8.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -56,6 +55,7 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "sass": "^1.32.8",
     "tailwindcss": "^2.1.1"
   }
 }
