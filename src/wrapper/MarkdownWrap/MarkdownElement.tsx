@@ -1,22 +1,13 @@
-import React, { FC, memo, ReactNode, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark as style } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, {FC, memo, ReactNode} from 'react';
 import classNames from 'classnames';
-import { Icon, IconTag, ShowQrCode, CurrentPageQrCode, Tooltip } from '@/components';
+import {
+  CurrentPageQrCode,
+  Icon,
+  IconTag,
+  ShowQrCode,
+  Tooltip
+} from '@/components';
 import './index.scss';
-
-type CodeProps = {
-  value: string;
-  language: string;
-};
-export const Code: FC<CodeProps> = memo(({ value = '', language }) => {
-  const [showLanguage] = useState(language || 'javascript');
-  return (
-    <SyntaxHighlighter showLineNumbers language={showLanguage} style={style}>
-      {value}
-    </SyntaxHighlighter>
-  );
-});
 
 export enum HeadingEnum {
   H1 = 1,

@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/components",
-  "version": "0.7.24",
+  "version": "0.7.25",
   "description": "react-components",
   "author": "powerfulyang",
   "license": "MIT",
@@ -30,7 +30,6 @@
     "qrious": "^4.0.2",
     "react-animate-height": "^2.0.23",
     "react-markdown": "^5.0.3",
-    "react-syntax-highlighter": "^15.4.3",
     "remark-gfm": "^1.0.0",
     "rxjs": "^6.6.7"
   },

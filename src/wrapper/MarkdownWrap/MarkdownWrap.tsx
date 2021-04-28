@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import classNames from 'classnames';
 import {
   BlockQuote,
-  Code,
   Heading,
   Link,
   List,
@@ -25,7 +24,6 @@ export const MarkdownWrap: FC<MarkdownWrapProps> = ({ source, className }) => {
       className={classNames('markdown_body', className)}
       plugins={[remarkGfm]}
       renderers={{
-        code: Code,
         heading: Heading,
         link: Link,
         blockquote: BlockQuote,
