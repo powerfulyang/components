@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/components",
-  "version": "0.7.25",
+  "version": "0.7.26",
   "description": "react-components",
   "author": "powerfulyang",
   "license": "MIT",
@@ -43,7 +43,6 @@
     "@types/classnames": "^2.2.11",
     "@types/lodash-es": "^4.17.4",
     "@types/react-dom": "^17.0.3",
-    "@types/react-syntax-highlighter": "^13.5.0",
     "autoprefixer": "^10.2.5",
     "lodash-es": "^4.17.21",
     "postcss": "^8.2.9",
