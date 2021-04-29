@@ -27,10 +27,6 @@
     "@powerfulyang/hooks": "^0.2.16",
     "@powerfulyang/utils": "^0.7.15",
     "classnames": "^2.3.1",
-    "qrious": "^4.0.2",
-    "react-animate-height": "^2.0.23",
-    "react-markdown": "^5.0.3",
-    "remark-gfm": "^1.0.0",
     "rxjs": "^6.6.7"
   },
   "devDependencies": {

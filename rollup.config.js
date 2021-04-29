@@ -14,7 +14,7 @@ import pkg from './package.json';
 const pkgDeps = Array.from(Object.keys(pkg.dependencies));
 
 export default {
-  input: 'src/index.tsx',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
