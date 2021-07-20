@@ -18,38 +18,47 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
     "build:dev": "rimraf dist && cross-env NODE_ENV=development rollup -c",
-    "watch:build": "rimraf dist && cross-env NODE_ENV=production rollup -c --watch"
+    "watch:build": "rimraf dist && cross-env NODE_ENV=production rollup -c --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {
-    "@powerfulyang/hooks": "^0.2.16",
+    "@powerfulyang/hooks": "^0.2.17",
     "@powerfulyang/utils": "^0.7.15",
     "classnames": "^2.3.1",
-    "rxjs": "^7.0.1"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
     "@powerfulyang/lint": "^0.2.16",
     "@powerfulyang/node-utils": "^0.2.13",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.2",
     "@rollup/plugin-url": "^6.0.0",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/react": "^6.3.4",
     "@svgr/rollup": "^5.5.0",
     "@types/classnames": "^2.3.0",
     "@types/lodash-es": "^4.17.4",
-    "@types/react-dom": "^17.0.5",
-    "autoprefixer": "^10.2.5",
+    "@types/react-dom": "^17.0.9",
+    "autoprefixer": "^10.3.1",
+    "babel-loader": "^8.2.2",
     "lodash-es": "^4.17.21",
-    "postcss": "^8.2.15",
+    "postcss": "^8.3.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rollup": "^2.48.0",
+    "rollup": "^2.53.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
-    "sass": "^1.32.13",
-    "tailwindcss": "^2.1.2"
+    "sass": "^1.35.2",
+    "tailwindcss": "^2.2.4",
+    "typescript": "^4.3.5"
   }
 }
