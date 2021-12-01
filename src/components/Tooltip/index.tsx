@@ -1,16 +1,10 @@
-import React, {
-  cloneElement,
-  FC,
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
+import React, { cloneElement, useCallback, useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import { useImmer } from '@powerfulyang/hooks';
 import './index.scss';
-import { getElementCenterPoint, ReturnTypedFunction } from '@powerfulyang/utils';
+import type { ReturnTypedFunction } from '@powerfulyang/utils';
+import { getElementCenterPoint } from '@powerfulyang/utils';
 import { PortalWrap } from '@/wrapper/PortalWrap';
 
 type Props = {
@@ -35,9 +29,7 @@ export const Tooltip: FC<Props> = ({ children, title }) => {
     setVisible(false);
   }, [setVisible]);
 
-  const child = useMemo(() => {
-    return React.Children.only(children) as ReactElement;
-  }, [children]);
+  const child = useMemo(() => React.Children.only(children) as ReactElement, [children]);
 
   return (
     <>

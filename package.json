@@ -8,14 +8,13 @@
   "files": [
     "dist"
   ],
-  "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "style": "dist/es/index.css",
   "sideEffects": false,
   "scripts": {
     "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,json,md}\"",
-    "fix:style": "stylelint --fix \"src/**/*.scss\" --syntax scss",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:style": "stylelint --fix \"src/**/*.scss\"",
+    "lint:js": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
     "build:dev": "rimraf dist && cross-env NODE_ENV=development rollup -c",
     "watch:build": "rimraf dist && cross-env NODE_ENV=production rollup -c --watch",
@@ -26,40 +25,37 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "@powerfulyang/hooks": "^0.2.18",
-    "@powerfulyang/utils": "^0.7.16",
+    "@powerfulyang/hooks": "^0.3.0",
+    "@powerfulyang/utils": "^1.2.0",
     "classnames": "^2.3.1",
-    "rxjs": "^7.3.0"
+    "rxjs": "^7.4.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@powerfulyang/lint": "^0.2.17",
-    "@powerfulyang/node-utils": "^0.2.14",
-    "@rollup/plugin-commonjs": "^20.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@babel/core": "^7.16.0",
+    "@powerfulyang/lint": "^0.7.2",
+    "@powerfulyang/node-utils": "^1.0.4",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-url": "^6.1.0",
-    "@storybook/addon-actions": "^6.3.7",
-    "@storybook/addon-essentials": "^6.3.7",
-    "@storybook/addon-links": "^6.3.7",
-    "@storybook/react": "^6.3.7",
-    "@svgr/rollup": "^5.5.0",
-    "@types/classnames": "^2.3.0",
-    "@types/lodash-es": "^4.17.4",
-    "@types/react-dom": "^17.0.9",
-    "autoprefixer": "^10.3.1",
-    "babel-loader": "^8.2.2",
+    "@storybook/addon-actions": "^6.4.3",
+    "@storybook/addon-essentials": "^6.4.3",
+    "@storybook/addon-links": "^6.4.3",
+    "@storybook/react": "^6.4.3",
+    "@svgr/rollup": "^6.0.0",
+    "@types/lodash-es": "^4.17.5",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
     "lodash-es": "^4.17.21",
-    "postcss": "^8.3.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rollup": "^2.56.2",
+    "rollup": "^2.60.2",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "sass": "^1.37.5",
-    "tailwindcss": "^2.2.7",
-    "typescript": "^4.3.5"
-  },
-  "gitHead": "972987c947501d8cc10ac38b6875e565c81f6880"
+    "rollup-plugin-typescript2": "^0.31.1",
+    "tailwindcss": "^2.2.19"
+  }
 }

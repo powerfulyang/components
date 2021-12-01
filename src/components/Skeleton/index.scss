@@ -2,11 +2,12 @@
   @return mix(black, $color, $percent);
 }
 
-$skeleton-color: rgba(190, 190, 190, 0.2);
+$skeleton-color: rgb(190 190 190 / 20%);
 $skeleton-to-color: shade($skeleton-color, 5%);
 
 .skeleton {
   @apply w-full h-full;
+
   div {
     background: linear-gradient(
       90deg,
@@ -18,9 +19,11 @@ $skeleton-to-color: shade($skeleton-color, 5%);
     border-radius: 5px;
     animation: skeleton-loading 1.4s ease infinite;
     @apply h-4 my-4 mx-8;
+
     &:first-child {
       @apply w-1/2;
     }
+
     &:last-child {
       @apply w-3/4;
     }
@@ -31,6 +34,7 @@ $skeleton-to-color: shade($skeleton-color, 5%);
   0% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0 50%;
   }

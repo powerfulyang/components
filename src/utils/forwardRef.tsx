@@ -29,8 +29,5 @@ export function forwardRef<P, T extends As>(
     ref: React.RefObject<any>,
   ) => React.ReactElement | null,
 ) {
-  return (React.forwardRef(comp as any) as unknown) as ComponentWithAs<
-    T,
-    Omit<P, 'children' | 'as'>
-  >;
+  return React.forwardRef(comp as any) as unknown as ComponentWithAs<T, Omit<P, 'children' | 'as'>>;
 }

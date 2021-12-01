@@ -1,5 +1,5 @@
-const lint = require('@powerfulyang/lint');
+const { stylelint } = require("@powerfulyang/lint");
 
 module.exports = {
-  ...lint.stylelint,
+  ...stylelint,
 };

@@ -1,6 +1,6 @@
 @import '../../global';
 
-.super_icon {
+.super-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -9,6 +9,6 @@
   fill: currentColor;
 }
 
-.super_icon_pointer {
+.super-icon-pointer {
   @extend .pointer;
 }

@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { useEffectOnce, usePortal } from '@powerfulyang/hooks';
 import { __dev__ } from '@powerfulyang/utils';
 

@@ -1,7 +1,5 @@
-import { usePortal } from '@powerfulyang/hooks';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+import { createPortal } from 'react-dom';
 
-export const PortalWrap: FC = ({ children }) => {
-  const { Portal } = usePortal();
-  return <Portal>{children}</Portal>;
-};
+export const PortalWrap: FC = ({ children }) => <>{createPortal(children, document.body)}</>;
