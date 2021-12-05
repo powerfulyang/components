@@ -6,7 +6,7 @@ import svgr from '@svgr/rollup';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
-import { __prod__ } from '@powerfulyang/utils';
+import { isProdProcess } from '@powerfulyang/utils';
 import tailwindcss from 'tailwindcss';
 import pkg from './package.json';
 
@@ -23,8 +23,8 @@ export default {
   ],
   plugins: [
     postcss({
-      plugins: [ tailwindcss('./tailwind.config.js')],
-      minimize: __prod__,
+      plugins: [tailwindcss('./tailwind.config.js')],
+      minimize: isProdProcess,
       extract: 'index.css',
     }),
     url(),
@@ -33,7 +33,7 @@ export default {
     commonjs({ include: 'node_modules/**' }),
     typescript(),
     babel(),
-    __prod__ && terser(),
+    isProdProcess && terser(),
   ],
   external: [...pkgDeps, 'react', 'react-dom'],
 };

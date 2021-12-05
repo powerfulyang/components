@@ -7,11 +7,11 @@ import type { ReturnTypedFunction } from '@powerfulyang/utils';
 import { getElementCenterPoint } from '@powerfulyang/utils';
 import { PortalWrap } from '@/wrapper/PortalWrap';
 
-type Props = {
+export type TooltipProps = {
   title?: ReactNode | ReturnTypedFunction<ReactNode>;
 };
 
-export const Tooltip: FC<Props> = ({ children, title }) => {
+export const Tooltip: FC<TooltipProps> = ({ children, title }) => {
   const [visible, setVisible] = useImmer(false);
   const [tipPosition, setTipPosition] = useImmer({ left: 0, top: 0 });
   const wrapRef = useRef<HTMLDivElement>(null);
