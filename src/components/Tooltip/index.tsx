@@ -37,7 +37,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, title }) => {
         ref: wrapRef,
         onMouseOver: hoverWrap,
         onMouseOut: leaveWrap,
-        className: classNames('pointer', child.props.className),
+        className: classNames(child.props.className),
       })}
       {visible && (
         <PortalWrap>

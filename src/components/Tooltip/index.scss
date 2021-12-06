@@ -1,10 +1,4 @@
-@import 'src/global';
-
 $bg: rgb(0 0 0 / 65%);
-
-.pointer {
-  @extend .pointer;
-}
 
 .wrap {
   @apply absolute;
