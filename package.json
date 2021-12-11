@@ -12,7 +12,9 @@
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "style": "dist/es/index.css",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.scss"
+  ],
   "scripts": {
     "patch-version": "npm version patch --no-git-tag-version",
     "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,json,md,scss}\"",
@@ -55,7 +57,6 @@
     "@types/react-dom": "^17.0.11",
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
-    "postcss": "^8.4.4",
     "rollup": "^2.61.0",
     "rollup-plugin-postcss": "^4.0.2",
     "sass-loader": "^12.4.0",

@@ -8,7 +8,7 @@ import typescript from '@rollup/plugin-typescript';
 const pkgDeps = Array.from(Object.keys(pkg.dependencies));
 
 export default {
-  input: 'src/index.ts',
+  input: 'src/index.tsx',
   output: [
     {
       file: pkg.main,
