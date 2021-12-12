@@ -1,15 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 :root {
   --py-tooltip-bg-color: rgb(0 0 0 / 65%);
   --py-tooltip-z-index: 1000;
+  --py-notification-z-index: 1000;
 
   #py-notification-collection {
     @apply fixed right-8 top-8;
 
-    z-index: var(--notification-z-index);
+    z-index: var(--py-notification-z-index);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
