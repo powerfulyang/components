@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react-components",
   "author": "powerfulyang",
   "license": "MIT",
@@ -13,7 +13,8 @@
   "module": "dist/es/index.js",
   "style": "dist/es/index.css",
   "sideEffects": [
-    "**/*.scss"
+    "**/*.scss",
+    "src/index.tsx"
   ],
   "scripts": {
     "patch-version": "npm version patch --no-git-tag-version",
@@ -36,7 +37,10 @@
   "dependencies": {
     "@powerfulyang/hooks": "^0.3.5",
     "@powerfulyang/utils": "^1.3.6",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "framer-motion": "^5.4.5",
+    "next": "^12.0.7",
+    "rxjs": "^7.4.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",

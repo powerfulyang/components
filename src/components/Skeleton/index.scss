@@ -5,10 +5,10 @@
 $skeleton-color: rgb(190 190 190 / 20%);
 $skeleton-to-color: shade($skeleton-color, 5%);
 
-.skeleton {
+.py-skeleton {
   @apply w-full h-full;
 
-  div {
+  &__row {
     background: linear-gradient(
       90deg,
       $skeleton-color 25%,

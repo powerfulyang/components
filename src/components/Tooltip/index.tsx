@@ -1,63 +1,66 @@
-import type { FC, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, useCallback, useMemo, useRef } from 'react';
+import type { FC, ReactNode } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useImmer } from '@powerfulyang/hooks';
 import './index.scss';
 import type { ReturnTypedFunction } from '@powerfulyang/utils';
-import { getElementCenterPoint } from '@powerfulyang/utils';
-import { PortalWrap } from '@/wrapper/PortalWrap';
+import { isFunction } from '@powerfulyang/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { Subscription } from 'rxjs';
+import { timer } from 'rxjs';
 
 export type TooltipProps = {
-  title?: ReactNode | ReturnTypedFunction<ReactNode>;
+  title: ReactNode | ReturnTypedFunction<ReactNode>;
 };
 
 export const Tooltip: FC<TooltipProps> = ({ children, title }) => {
   const [visible, setVisible] = useImmer(false);
-  const [tipPosition, setTipPosition] = useImmer({ left: 0, top: 0 });
-  const wrapRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<Subscription>();
   const hoverWrap = useCallback(() => {
-    setVisible(true);
-    const { x, top } = getElementCenterPoint(wrapRef.current!);
-    setTipPosition((draft) => {
-      draft.left = x;
-      draft.top = top;
+    ref.current = timer(150).subscribe(() => {
+      setVisible(true);
     });
-    // 中心点位置
-  }, [setTipPosition, setVisible]);
-
-  const leaveWrap = useCallback(() => {
-    setVisible(false);
   }, [setVisible]);
 
-  const child = useMemo(() => React.Children.only(children) as ReactElement, [children]);
+  const leaveWrap = useCallback(() => {
+    ref.current = timer(150).subscribe(() => {
+      setVisible(false);
+    });
+  }, [setVisible]);
+
+  useEffect(() => {
+    return () => {
+      ref.current?.unsubscribe();
+    };
+  }, []);
 
   return (
-    <>
-      {cloneElement(child, {
-        ref: wrapRef,
-        onMouseOver: hoverWrap,
-        onMouseOut: leaveWrap,
-        className: classNames(child.props.className),
-      })}
-      {visible && (
-        <PortalWrap>
-          <div
-            className={classNames('wrap', {
-              in: visible,
-              fade: !visible,
-            })}
-            style={tipPosition}
+    <span className="relative" onMouseEnter={hoverWrap} onMouseLeave={leaveWrap}>
+      {children}
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{
+              type: 'keyframes',
+              duration: 0.2,
+              ease: 'easeInOut',
+            }}
+            className={classNames('py-tooltip-wrap')}
           >
             <div className="tooltip">
-              <div className="arrow">
-                <span className="content" />
-              </div>
-              {title && <div className="title">{title}</div>}
+              <div className="title">{isFunction(title) ? title() : title}</div>
             </div>
-          </div>
-        </PortalWrap>
-      )}
-    </>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </span>
   );
 };
 

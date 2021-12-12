@@ -1,16 +1,22 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TooltipExample } from './TooltipExample';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Tooltip } from '@';
 
 export default {
-  title: 'Example/TooltipExample',
-  component: TooltipExample,
-} as ComponentMeta<typeof TooltipExample>;
+  title: 'Example/Components/Tooltip',
+  component: Tooltip,
+} as ComponentMeta<typeof Tooltip>;
 
-const Template: ComponentStory<typeof TooltipExample> = (args) => <TooltipExample {...args} />;
+const Template: ComponentStory<typeof Tooltip> = (args) => {
+  return (
+    <div className={'mt-4'}>
+      <Tooltip {...args} />
+    </div>
+  );
+};
 
-export const Tooltip = Template.bind({});
-Tooltip.args = {
+export const TooltipExample = Template.bind({});
+TooltipExample.args = {
   title: 'Tooltip',
-  children: <span>Content</span>,
+  children: 'Content',
 };

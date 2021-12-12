@@ -1,37 +1,28 @@
-$bg: rgb(0 0 0 / 65%);
-
-.wrap {
+.py-tooltip-wrap {
   @apply absolute;
 
-  z-index: 999;
-  transform: translateX(-50%) translateY(calc(-100% - 0.5rem));
+  z-index: var(--py-tooltip-z-index);
+  top: calc(-100% - 0.8rem);
 
   .tooltip {
-    background-color: $bg;
-    border: none;
-    border-radius: 2px;
+    background-color: var(--py-tooltip-bg-color);
+    @apply rounded-sm;
 
-    .arrow {
-      bottom: -0.5rem;
-      left: 50%;
-      z-index: 1000;
-      transform: translateX(-50%);
-      @apply absolute block w-4 h-2 overflow-hidden;
+    .title {
+      min-width: 2rem;
+      @apply text-center text-white whitespace-nowrap p-1 px-1.5 text-xs relative;
 
-      .content {
-        width: 0.4rem;
-        height: 0.4rem;
-        background-color: $bg;
-        transform: rotate(-45deg);
-        transform-origin: top left;
-        @apply block m-auto;
+      &::after {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 0.35rem solid transparent;
+        border-top: 0.35rem solid var(--py-tooltip-bg-color);
+        content: '';
+        transform: translateX(-50%);
       }
     }
-  }
-
-  .title {
-    min-width: 2rem;
-    font-size: 0.8rem;
-    @apply text-center text-white block whitespace-nowrap;
   }
 }

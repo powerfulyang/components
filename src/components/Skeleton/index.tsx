@@ -6,10 +6,14 @@ type SkeletonProps = {
   rows?: number;
 };
 
-export const Skeleton: FC<SkeletonProps> = ({ rows = 4 }) => (
-  <div className="skeleton">
-    {new Array(rows).fill(1).map((_, index) => (
-      <div key={index.toString()} />
-    ))}
-  </div>
-);
+export const Skeleton: FC<SkeletonProps> = ({ rows = 4 }) => {
+  return (
+    <div className="py-skeleton">
+      {Object.keys(Array.from({ length: rows })).map((_) => (
+        <div key={_} className="py-skeleton__row" />
+      ))}
+    </div>
+  );
+};
+
+Skeleton.displayName = 'Skeleton';

@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
 import { usePortal } from '@powerfulyang/hooks';
-import { isDevProcess } from '@powerfulyang/utils';
 
 type ModalWrapProps = {};
 
@@ -18,8 +17,6 @@ const ModalWrap: FC<ModalWrapProps> = ({ children }) => {
   return <Portal>{children}</Portal>;
 };
 
-if (isDevProcess) {
-  ModalWrap.displayName = 'ModalWrap';
-}
+ModalWrap.displayName = 'ModalWrap';
 
 export default ModalWrap;
