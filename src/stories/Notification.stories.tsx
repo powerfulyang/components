@@ -10,19 +10,18 @@ export default {
 const Template: ComponentStory<typeof Notification> = () => {
   return (
     <>
-      <Notification title={'success'} content={'content'} type={'success'} autoClose={false} />
-      <Notification title={'warn'} content={'content'} type={'warn'} autoClose={false} />
+      <Notification message={'success'} description={'content'} type={'success'} />
+      <Notification message={'warn'} description={'content'} type={'warn'} />
       <Notification
-        title={'error'}
-        content={'contentadjskaldmsal/dmsaldmasl/dmaskd ams. fsaddfm. sdmf. asdfm,'}
+        message={'error'}
+        description={'contentadjskaldmsal/dmsaldmasl/dmaskd ams. fsaddfm. sdmf. asdfm,'}
         type={'error'}
-        autoClose={false}
       />
       <button
         type={'button'}
         onClick={() =>
           notification.warn({
-            title: '小心55开!',
+            message: '小心55开!',
           })
         }
       >

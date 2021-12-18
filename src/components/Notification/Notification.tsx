@@ -1,15 +1,15 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { timer } from 'rxjs';
+import { interval } from 'rxjs';
 import { usePortal } from '@powerfulyang/hooks';
 import './index.scss';
 import { Icon } from '@/components/Icon';
 
 export type NotificationProps = {
-  title?: string;
-  content?: string;
+  message?: string;
+  description?: string;
   type?: 'success' | 'warn' | 'error';
   onClose?: VoidFunction;
   autoClose?: boolean;
@@ -27,31 +27,38 @@ export const getNotificationParent = () => {
 };
 
 export const Notification: FC<NotificationProps> = ({
-  title,
-  content,
+  message,
+  description,
   type = 'success',
   onClose,
   delay = 1500,
-  autoClose = true,
+  autoClose = false,
 }) => {
   const dialogNode = useRef(document.createElement('section'));
+  const [hovering, setHovering] = useState(false);
   const { Portal } = usePortal({
     container: dialogNode.current,
   });
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const dialog = dialogNode.current;
     const parent = getNotificationParent();
     parent.appendChild(dialog);
-    const subscribe = timer(delay).subscribe(() => {
-      autoClose && setVisible(false);
-    });
+
     return () => {
       parent.removeChild(dialog);
-      subscribe.unsubscribe();
     };
   }, [autoClose, delay]);
+
+  useEffect(() => {
+    const subscribe = interval(delay).subscribe(() => {
+      autoClose && !hovering && setVisible(false);
+    });
+    return () => {
+      subscribe.unsubscribe();
+    };
+  }, [autoClose, delay, hovering]);
 
   return (
     <Portal>
@@ -62,11 +69,16 @@ export const Notification: FC<NotificationProps> = ({
       >
         {visible && (
           <motion.div
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
             key="notification"
             variants={{
               hidden: { opacity: 0, y: -20 },
               visible: { opacity: 1, y: 0 },
               exited: { opacity: 0, x: 50 },
+            }}
+            onHoverEnd={() => {
+              autoClose && setVisible(false);
             }}
             initial="hidden"
             animate="visible"
@@ -77,13 +89,17 @@ export const Notification: FC<NotificationProps> = ({
             <div>
               <section className="flex items-center">
                 <Icon type={`icon-${type}`} className={classNames('status', type)} />
-                <section className="title">{title}</section>
+                <section className="title">{message}</section>
                 <div className="ml-auto">
-                  <Icon type="icon-close" className="close" onClick={() => setVisible(false)} />
+                  <Icon
+                    type="icon-close"
+                    className="close pointer"
+                    onClick={() => setVisible(false)}
+                  />
                 </div>
               </section>
               <div className="mx-2">
-                <section className="content">{content}</section>
+                <section className="content">{description}</section>
               </div>
             </div>
           </motion.div>

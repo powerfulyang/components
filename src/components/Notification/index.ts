@@ -13,7 +13,7 @@ export const Notification = dynamic(
   },
 );
 
-const renderNotification = ({ type, title, content }: RenderNotificationProps) => {
+const renderNotification = ({ ...props }: RenderNotificationProps) => {
   const parent = getNotificationParent();
   const fragment = document.createDocumentFragment();
   parent.appendChild(fragment);
@@ -22,9 +22,7 @@ const renderNotification = ({ type, title, content }: RenderNotificationProps) =
   };
   ReactDOM.render(
     React.createElement(Notification, {
-      type,
-      title,
-      content,
+      ...props,
       onClose,
     }),
     fragment,
@@ -32,13 +30,13 @@ const renderNotification = ({ type, title, content }: RenderNotificationProps) =
 };
 
 export const notification = {
-  success({ title, content }: RenderNotificationProps) {
-    renderNotification({ title, content, type: 'success' });
+  success({ ...props }: RenderNotificationProps) {
+    renderNotification({ autoClose: true, ...props, type: 'success' });
   },
-  warn({ title, content }: RenderNotificationProps) {
-    renderNotification({ title, content, type: 'warn' });
+  warn({ ...props }: RenderNotificationProps) {
+    renderNotification({ autoClose: true, ...props, type: 'warn' });
   },
-  error({ title, content }: RenderNotificationProps) {
-    renderNotification({ title, content, type: 'error' });
+  error({ ...props }: RenderNotificationProps) {
+    renderNotification({ autoClose: true, ...props, type: 'error' });
   },
 };
