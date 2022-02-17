@@ -41,17 +41,18 @@ export const Tooltip: FC<TooltipProps> = ({ children, title }) => {
         {visible && (
           <motion.div
             variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 },
+              hidden: { opacity: 0, transition: { type: false } },
+              visible: {
+                opacity: 1,
+                transition: {
+                  ease: 'easeIn',
+                  duration: 0.1,
+                },
+              },
             }}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{
-              type: 'keyframes',
-              duration: 0.2,
-              ease: 'easeInOut',
-            }}
             className={classNames('py-tooltip-wrap')}
           >
             <div className="tooltip">
