@@ -1,0 +1,13 @@
+$base-color: #90caf9;
+
+.py-wave-click {
+  position: relative;
+  overflow: hidden;
+  .py-wave {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    background: lighten($base-color, 15%);
+    border-radius: 100%;
+  }
+}

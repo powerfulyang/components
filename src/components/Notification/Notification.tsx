@@ -93,7 +93,7 @@ export const Notification: FC<NotificationProps> = ({
                 <div className="ml-auto">
                   <Icon
                     type="icon-close"
-                    className="close pointer"
+                    className="close cursor-pointer"
                     onClick={() => setVisible(false)}
                   />
                 </div>
