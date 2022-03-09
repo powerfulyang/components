@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
     "module": "ESNext",
     "target": "ESNext",
     "sourceMap": true,
@@ -20,8 +19,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": ".",
     "paths": {
       "@": ["./src"],
       "@/*": ["./src/*"]

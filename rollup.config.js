@@ -3,6 +3,8 @@ import url from '@rollup/plugin-url';
 import { isProdProcess } from '@powerfulyang/utils';
 import pkg from './package.json';
 import typescript from '@rollup/plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 const pkgDeps = Array.from(Object.keys(pkg.dependencies));
 const peerPkgDeps = Array.from(Object.keys(pkg.peerDependencies));
@@ -11,24 +13,31 @@ export default {
   input: 'src/index.tsx',
   output: [
     {
-      file: pkg.main,
+      entryFileNames: `[name].js`,
+      dir: 'dist/cjs',
       format: 'cjs',
+      exports: 'named',
       sourcemap: true,
+      preserveModules: true,
     },
     {
-      file: pkg.module,
-      format: 'esm',
       sourcemap: true,
+      entryFileNames: '[name].mjs',
+      format: 'es',
+      exports: 'named',
+      preserveModules: true,
+      dir: 'dist/es',
     },
   ],
   plugins: [
+    resolve(),
     postcss({
       minimize: isProdProcess,
+      extract: 'index.css',
     }),
     url(),
-    typescript({
-      tsconfig: './tsconfig.json',
-    }),
+    typescript(),
+    commonjs(),
   ],
   external: [...pkgDeps, ...peerPkgDeps],
 };

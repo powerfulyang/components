@@ -1,17 +1,9 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import dynamic from 'next/dynamic';
-import type { NotificationProps } from '@/components/Notification/Notification';
-import { getNotificationParent } from '@/components/Notification/Notification';
+import type { NotificationProps } from './Notification';
+import { getNotificationParent, Notification } from './Notification';
 
 export type RenderNotificationProps = Omit<NotificationProps, 'onClose'>;
-
-export const Notification = dynamic(
-  import('./Notification').then((res) => res.Notification),
-  {
-    ssr: false,
-  },
-);
 
 const renderNotification = ({ ...props }: RenderNotificationProps) => {
   const parent = getNotificationParent();
