@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/components",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "react-components",
   "author": "powerfulyang",
   "license": "MIT",
@@ -23,10 +23,7 @@
       "style": "./dist/es/index.css"
     }
   },
-  "sideEffects": [
-    "**/*.scss",
-    "src/components/Icon/index.tsx"
-  ],
+  "sideEffects": false,
   "scripts": {
     "patch-version": "npm version patch --no-git-tag-version",
     "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,json,md,scss}\"",
