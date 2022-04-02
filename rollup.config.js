@@ -7,7 +7,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 const pkgDeps = Array.from(Object.keys(pkg.dependencies));
-const peerPkgDeps = Array.from(Object.keys(pkg.peerDependencies));
 
 export default {
   input: 'src/index.tsx',
@@ -39,5 +38,5 @@ export default {
     typescript(),
     commonjs(),
   ],
-  external: [...pkgDeps, ...peerPkgDeps],
+  external: [...pkgDeps],
 };
