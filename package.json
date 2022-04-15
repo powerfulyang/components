@@ -57,7 +57,7 @@
     "cross-env": "7.0.3",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "rollup": "2.70.1",
+    "rollup": "2.70.2",
     "rollup-plugin-postcss": "4.0.2"
   }
 }
