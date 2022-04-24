@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/powerfulyang/components/compare/v1.0.0...v1.3.0) (2022-04-24)
+
+
+### Miscellaneous Chores
+
+* release 1.3.0 ([b6023bb](https://github.com/powerfulyang/components/commit/b6023bbfc95253cfebc83941106ee59e26138347))
+
 ## 1.0.0 (2022-04-24)
 
 
