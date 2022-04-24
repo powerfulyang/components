@@ -1,5 +1,8 @@
 import brokenImg from './broken.gif';
 import transparentImg from './transparent.png';
 
-const assets = { brokenImg, transparentImg };
-export { assets };
+/**
+ * base64 encoded images
+ */
+const Assets = { brokenImg, transparentImg };
+export { Assets };

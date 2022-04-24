@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, PropsWithChildren, ReactNode } from 'react';
 import React, { useCallback, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useImmer } from '@powerfulyang/hooks';
@@ -13,7 +13,7 @@ export type TooltipProps = {
   title: ReactNode | ReturnTypedFunction<ReactNode>;
 };
 
-export const Tooltip: FC<TooltipProps> = ({ children, title }) => {
+export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ children, title }) => {
   const [visible, setVisible] = useImmer(false);
   const ref = useRef<Subscription>();
   const hoverWrap = useCallback(() => {

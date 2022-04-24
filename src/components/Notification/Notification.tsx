@@ -36,9 +36,7 @@ export const Notification: FC<NotificationProps> = ({
 }) => {
   const dialogNode = useRef(document.createElement('section'));
   const [hovering, setHovering] = useState(false);
-  const { Portal } = usePortal({
-    container: dialogNode.current,
-  });
+  const Portal = usePortal(dialogNode.current);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {

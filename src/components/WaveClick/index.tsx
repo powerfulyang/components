@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import React, { useState } from 'react';
 import './index.scss';
 
-export const WaveClick: FC = ({ children }) => {
+export const WaveClick: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const [animate, setAnimate] = useState(false);
   const [position, setPosition] = useState({ left: 0, top: 0 });
 
