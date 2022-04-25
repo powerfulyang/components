@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://github.com/powerfulyang/components/compare/v1.3.0...v1.3.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @powerfulyang/hooks to v1.0.5 ([eeef5f8](https://github.com/powerfulyang/components/commit/eeef5f8f5a25d2a104feeb3870047bc0dabd2b5d))
+
 ## [1.3.0](https://github.com/powerfulyang/components/compare/v1.0.0...v1.3.0) (2022-04-24)
 
 
