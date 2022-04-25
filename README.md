@@ -1,4 +1,8 @@
-:book: This is my React components!~
+# Install
+
+```bash
+npm install @powerfulyang/components
+```
 
 ## License
 

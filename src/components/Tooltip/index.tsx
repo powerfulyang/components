@@ -55,7 +55,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ children, title }
             exit="hidden"
             className={classNames('py-tooltip-wrap')}
           >
-            <div className="tooltip">
+            <div role="tooltip" className="tooltip">
               <div className="title">{isFunction(title) ? title() : title}</div>
             </div>
           </motion.div>
