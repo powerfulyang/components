@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/powerfulyang/components/compare/v1.3.2...v1.4.0) (2022-04-30)
+
+
+### Features
+
+* new version linter ([9ba7e42](https://github.com/powerfulyang/components/commit/9ba7e42b91a7d52cb11d2d2237a4dc29cf187e76))
+
+
+### Bug Fixes
+
+* **deps:** update dependency framer-motion to v6.3.2 ([a5f91d6](https://github.com/powerfulyang/components/commit/a5f91d679d526425c861faa84bdb829211abf680))
+* **deps:** update dependency framer-motion to v6.3.3 ([c3830a1](https://github.com/powerfulyang/components/commit/c3830a195d2364cf1afc008c01f34288266b45b9))
+* **deps:** update react monorepo to v18.1.0 ([f6a37bc](https://github.com/powerfulyang/components/commit/f6a37bcc1f458e12d7c58655f3c1d9c26b6d7bf7))
+
 ### [1.3.2](https://github.com/powerfulyang/components/compare/v1.3.1...v1.3.2) (2022-04-25)
 
 
