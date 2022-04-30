@@ -1,12 +1,13 @@
 import postcss from 'rollup-plugin-postcss';
 import url from '@rollup/plugin-url';
 import { isProdProcess } from '@powerfulyang/utils';
-import pkg from './package.json';
 import typescript from '@rollup/plugin-typescript';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
+import { createRequire } from 'module';
 
-const pkgDeps = Object.keys(pkg.dependencies);
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
+
+const pkgDeps = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies });
 
 export default {
   input: 'src/index.tsx',
@@ -29,14 +30,12 @@ export default {
     },
   ],
   plugins: [
-    resolve(),
     postcss({
       minimize: isProdProcess,
       extract: 'index.css',
     }),
     url(),
     typescript(),
-    commonjs(),
   ],
   external: [...pkgDeps],
 };

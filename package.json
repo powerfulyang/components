@@ -32,15 +32,15 @@
   },
   "sideEffects": false,
   "scripts": {
-    "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,json,md,scss}\"",
+    "prettier": "prettier --write \"src/**/*.{tsx,ts,scss}\"",
     "lint:style": "stylelint --fix \"src/**/*.scss\"",
-    "lint:js": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:js": "eslint --fix --ext .ts,.tsx ./src",
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
     "build:types": "tsc -p tsconfig.types.json",
     "ts-check": "tsc --noEmit",
-    "prepare": "husky install",
+    "postprepare": "husky install && install-peers",
     "test": "jest",
     "precommit": "npm run ts-check && lint-staged && npm run test",
     "prepublishOnly": "npm run build"
@@ -48,30 +48,23 @@
   "browserslist": [
     "last 2 versions"
   ],
-  "dependencies": {
-    "@powerfulyang/hooks": "1.0.6",
-    "@powerfulyang/utils": "1.4.1",
-    "classnames": "2.3.1",
-    "framer-motion": "6.3.3",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "rxjs": "7.5.5"
+  "peerDependencies": {
+    "@powerfulyang/hooks": "^1.1.0",
+    "@powerfulyang/utils": "^1.4.2",
+    "classnames": "^2.3.1",
+    "framer-motion": "^6.3.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "1.4.8",
-    "@rollup/plugin-commonjs": "22.0.0",
-    "@rollup/plugin-node-resolve": "13.2.1",
+    "@powerfulyang/lint": "1.4.12",
     "@rollup/plugin-typescript": "8.3.2",
-    "@rollup/plugin-url": "6.1.0",
+    "@rollup/plugin-url": "7.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.1.1",
-    "@types/react": "18.0.8",
-    "@types/react-dom": "18.0.3",
-    "cross-env": "7.0.3",
-    "npm-run-all": "4.1.5",
-    "rollup": "2.70.2",
+    "reflect-metadata": "0.1.13",
     "rollup-plugin-postcss": "4.0.2",
-    "tailwindcss": "3.0.24",
     "tsconfig-paths-jest": "0.0.1"
   }
 }

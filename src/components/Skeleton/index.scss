@@ -1,9 +1,9 @@
-@function shade($color, $percent) {
+@function --custom-shade($color, $percent) {
   @return mix(black, $color, $percent);
 }
 
 $skeleton-color: rgb(190 190 190 / 20%);
-$skeleton-to-color: shade($skeleton-color, 5%);
+$skeleton-to-color: --custom-shade($skeleton-color, 5%);
 
 .py-skeleton {
   @apply w-full h-full;
