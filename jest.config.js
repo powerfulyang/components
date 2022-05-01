@@ -1,6 +1,9 @@
+const { pathsToModuleNameMapper } = require('@powerfulyang/lint');
 const tsconfig = require('./tsconfig.json');
-const moduleNameMapper = require('tsconfig-paths-jest')(tsconfig);
 
+const moduleNameMapper = pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
+  prefix: '<rootDir>/',
+});
 module.exports = {
   moduleNameMapper: {
     ...moduleNameMapper,

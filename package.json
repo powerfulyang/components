@@ -38,7 +38,7 @@
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
-    "build:types": "tsc -p tsconfig.types.json",
+    "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
     "ts-check": "tsc --noEmit",
     "postprepare": "husky install && install-peers",
     "test": "jest",
@@ -49,8 +49,8 @@
     "last 2 versions"
   ],
   "peerDependencies": {
-    "@powerfulyang/hooks": "^1.1.0",
-    "@powerfulyang/utils": "^1.4.2",
+    "@powerfulyang/hooks": "^1.1.1",
+    "@powerfulyang/utils": "^1.4.3",
     "classnames": "^2.3.1",
     "framer-motion": "^6.3.3",
     "react": "^18.1.0",
@@ -58,13 +58,11 @@
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "1.4.12",
+    "@powerfulyang/lint": "1.6.1",
     "@rollup/plugin-typescript": "8.3.2",
     "@rollup/plugin-url": "7.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.1.1",
-    "reflect-metadata": "0.1.13",
-    "rollup-plugin-postcss": "4.0.2",
-    "tsconfig-paths-jest": "0.0.1"
+    "rollup-plugin-postcss": "4.0.2"
   }
 }
