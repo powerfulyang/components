@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.1](https://github.com/powerfulyang/components/compare/v1.4.0...v1.4.1) (2022-05-01)
+
+
+### Bug Fixes
+
+* declaration paths didn't transform ([c19363f](https://github.com/powerfulyang/components/commit/c19363fbee2b787c20ee5fae3470f92cbc6cf6ee))
+
 ## [1.4.0](https://github.com/powerfulyang/components/compare/v1.3.2...v1.4.0) (2022-04-30)
 
 
