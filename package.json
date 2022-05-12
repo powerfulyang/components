@@ -50,7 +50,7 @@
   ],
   "peerDependencies": {
     "@powerfulyang/hooks": "^1.1.1",
-    "@powerfulyang/utils": "^1.4.3",
+    "@powerfulyang/utils": "^1.4.4",
     "classnames": "^2.3.1",
     "framer-motion": "^6.3.3",
     "react": "^18.1.0",
@@ -58,7 +58,7 @@
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "1.6.1",
+    "@powerfulyang/lint": "2.0.0",
     "@rollup/plugin-typescript": "8.3.2",
     "@rollup/plugin-url": "7.0.0",
     "@testing-library/jest-dom": "5.16.4",

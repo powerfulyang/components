@@ -1,5 +1,4 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
+import { createRoot } from 'react-dom/client';
 import type { NotificationProps } from './Notification';
 import { getNotificationParent, Notification } from './Notification';
 
@@ -9,16 +8,11 @@ const renderNotification = ({ ...props }: RenderNotificationProps) => {
   const parent = getNotificationParent();
   const fragment = document.createDocumentFragment();
   parent.appendChild(fragment);
+  const root = createRoot(fragment);
   const onClose = () => {
-    ReactDOM.unmountComponentAtNode(fragment);
+    root.unmount();
   };
-  ReactDOM.render(
-    React.createElement(Notification, {
-      ...props,
-      onClose,
-    }),
-    fragment,
-  );
+  root.render(Notification({ ...props, onClose }));
 };
 
 export const notification = {
