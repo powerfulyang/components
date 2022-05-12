@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.2](https://github.com/powerfulyang/components/compare/v1.4.1...v1.4.2) (2022-05-12)
+
+
+### Bug Fixes
+
+* use createRoot instead of createElement ([f75e921](https://github.com/powerfulyang/components/commit/f75e9217a67305a13d32a50a96f66176d38286fb))
+
 ### [1.4.1](https://github.com/powerfulyang/components/compare/v1.4.0...v1.4.1) (2022-05-01)
 
 
