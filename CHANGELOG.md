@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.3](https://github.com/powerfulyang/components/compare/v1.4.2...v1.4.3) (2022-05-13)
+
+
+### Bug Fixes
+
+* hooks can only be called inside of the body of a function component ([c7d6f9d](https://github.com/powerfulyang/components/commit/c7d6f9d766b98b74111ae81bb46051338bea841f))
+
 ### [1.4.2](https://github.com/powerfulyang/components/compare/v1.4.1...v1.4.2) (2022-05-12)
 
 
