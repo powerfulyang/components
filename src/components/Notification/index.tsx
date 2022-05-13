@@ -1,3 +1,4 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import type { NotificationProps } from './Notification';
 import { getNotificationParent, Notification } from './Notification';
@@ -12,7 +13,7 @@ const renderNotification = ({ ...props }: RenderNotificationProps) => {
   const onClose = () => {
     root.unmount();
   };
-  root.render(Notification({ ...props, onClose }));
+  root.render(<Notification {...props} onClose={onClose} />);
 };
 
 export const notification = {
