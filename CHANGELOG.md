@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.4](https://github.com/powerfulyang/components/compare/v1.4.3...v1.4.4) (2022-05-16)
+
+
+### Bug Fixes
+
+* iconfont 交给最外层控制 ([57180ee](https://github.com/powerfulyang/components/commit/57180eee2cb126dd0b2752c705fecddb1300a39a))
+
 ### [1.4.3](https://github.com/powerfulyang/components/compare/v1.4.2...v1.4.3) (2022-05-13)
 
 
