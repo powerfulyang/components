@@ -58,7 +58,7 @@
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "2.0.0",
+    "@powerfulyang/lint": "2.0.1",
     "@rollup/plugin-typescript": "8.3.2",
     "@rollup/plugin-url": "7.0.0",
     "@testing-library/jest-dom": "5.16.4",
