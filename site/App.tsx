@@ -1,9 +1,14 @@
 import React from 'react';
+import { Dialog } from '@/components/Dialog';
 
 const App = () => {
+  const [visible, setVisible] = React.useState(false);
   return (
     <div className="App">
-      <h1>Hello, world!</h1>
+      <button type="button" onClick={() => setVisible(true)}>
+        Hello, world!
+      </button>
+      <Dialog visible={visible} />
     </div>
   );
 };
