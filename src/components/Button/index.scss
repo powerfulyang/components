@@ -1,0 +1,16 @@
+$base-color: #90caf9;
+
+.py-ripple-click {
+  position: absolute;
+  overflow: hidden;
+  inset: 0;
+  border-radius: inherit;
+
+  .py-ripple {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: rgb(0 0 0 / 20%);
+    border-radius: 50%;
+  }
+}

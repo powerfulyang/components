@@ -14,11 +14,12 @@ export const Skeleton: FC<SkeletonProps> = ({ rows = 4 }) => {
         <motion.div
           animate={{
             scaleX: [0.9, 1, 0.9],
-            transformOrigin: ['right', 'left'],
+            transformOrigin: [0, 0],
             transition: {
               duration: 1.5,
               ease: 'easeInOut',
-              loop: Infinity,
+              repeatType: 'loop',
+              repeat: Infinity,
             },
           }}
           key={_}

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { interval } from 'rxjs';
+import { timer } from 'rxjs';
 import { usePortal } from '@powerfulyang/hooks';
 import './index.scss';
 import { Icon } from '@/components/Icon';
@@ -13,7 +13,7 @@ export type NotificationProps = {
   type?: 'success' | 'warn' | 'error';
   onClose?: VoidFunction;
   autoClose?: boolean;
-  delay?: number;
+  duration?: number;
 };
 
 export const getNotificationParent = () => {
@@ -31,13 +31,13 @@ export const Notification: FC<NotificationProps> = ({
   description,
   type = 'success',
   onClose,
-  delay = 1500,
+  duration = 1500,
   autoClose = false,
 }) => {
   const dialogNode = useRef(document.createElement('section'));
-  const [hovering, setHovering] = useState(false);
   const Portal = usePortal(dialogNode.current);
   const [visible, setVisible] = useState(true);
+  const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
     const dialog = dialogNode.current;
@@ -47,16 +47,19 @@ export const Notification: FC<NotificationProps> = ({
     return () => {
       parent.removeChild(dialog);
     };
-  }, [autoClose, delay]);
+  }, []);
 
   useEffect(() => {
-    const subscribe = interval(delay).subscribe(() => {
-      autoClose && !hovering && setVisible(false);
-    });
-    return () => {
-      subscribe.unsubscribe();
-    };
-  }, [autoClose, delay, hovering]);
+    if (autoClose && !isHover) {
+      const subscription = timer(duration).subscribe(() => {
+        setVisible(false);
+      });
+      return () => {
+        subscription.unsubscribe();
+      };
+    }
+    return () => {};
+  }, [autoClose, duration, isHover]);
 
   return (
     <Portal>
@@ -67,16 +70,17 @@ export const Notification: FC<NotificationProps> = ({
       >
         {visible && (
           <motion.div
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
+            onHoverStart={() => {
+              setIsHover(true);
+            }}
+            onHoverEnd={() => {
+              setIsHover(false);
+            }}
             key="notification"
             variants={{
               hidden: { opacity: 0, y: -20 },
               visible: { opacity: 1, y: 0 },
               exited: { opacity: 0, x: 50 },
-            }}
-            onHoverEnd={() => {
-              autoClose && setVisible(false);
             }}
             initial="hidden"
             animate="visible"

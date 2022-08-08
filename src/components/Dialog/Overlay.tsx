@@ -1,24 +1,33 @@
 import { motion } from 'framer-motion';
 import type { FC } from 'react';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
-import { DialogContext } from '@/components/Dialog/DialogContext';
 
 export interface MaskProps {}
 
 export const Overlay: FC<MaskProps> = () => {
-  const { visible } = useContext(DialogContext);
-  const animate = useMemo(() => {
-    if (visible) {
-      return {
+  const variants = useMemo(
+    () => ({
+      initial: {
+        opacity: 0,
+      },
+      animate: {
         opacity: 1,
-      };
-    }
-    return {
-      opacity: 0,
-    };
-  }, [visible]);
+      },
+      exit: {
+        opacity: 0,
+      },
+    }),
+    [],
+  );
+
   return (
-    <motion.div animate={animate} className={classNames('absolute inset-0 bg-black/[0.65]')} />
+    <motion.div
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={classNames('absolute inset-0 bg-black/[0.45]')}
+    />
   );
 };
