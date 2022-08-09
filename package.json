@@ -66,6 +66,6 @@
     "@testing-library/react": "13.3.0",
     "@vitejs/plugin-react": "2.0.0",
     "rollup-plugin-postcss": "4.0.2",
-    "vite": "3.0.4"
+    "vite": "3.0.5"
   }
 }
