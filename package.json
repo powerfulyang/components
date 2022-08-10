@@ -40,7 +40,7 @@
     "build:source": "rollup -c",
     "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
     "ts-check": "tsc --noEmit",
-    "postprepare": "husky install && install-peers",
+    "postprepare": "husky install",
     "test": "jest --passWithNoTests",
     "precommit": "npm run ts-check && lint-staged && npm run test",
     "prepublishOnly": "npm run build",
@@ -50,13 +50,13 @@
     "last 2 versions"
   ],
   "peerDependencies": {
-    "@powerfulyang/hooks": "^1.1.1",
-    "@powerfulyang/utils": "^1.4.4",
     "classnames": "^2.3.1",
     "framer-motion": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rxjs": "^7.5.6"
+    "rxjs": "^7.5.6",
+    "@powerfulyang/hooks": "*",
+    "@powerfulyang/utils": "*"
   },
   "devDependencies": {
     "@powerfulyang/lint": "2.0.2",

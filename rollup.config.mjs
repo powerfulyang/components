@@ -37,5 +37,5 @@ export default {
     url(),
     typescript(),
   ],
-  external: [...pkgDeps],
+  external: [...pkgDeps, 'react-dom/client'],
 };
