@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/powerfulyang/components/compare/v1.5.0...v1.5.1) (2022-08-12)
+
+
+### Bug Fixes
+
+* error rootDir ([ee06296](https://github.com/powerfulyang/components/commit/ee06296e8b5fce3c3c0d7b8e3b560a455002e444))
+
 ## [1.5.0](https://github.com/powerfulyang/components/compare/v1.4.4...v1.5.0) (2022-08-12)
 
 
