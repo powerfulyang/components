@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.0](https://github.com/powerfulyang/components/compare/v1.4.4...v1.5.0) (2022-08-12)
+
+
+### Features
+
+* add Dialog and Button ([37cf4ea](https://github.com/powerfulyang/components/commit/37cf4ea9077b8f9561c0e5b2acd38e36ac8475dd))
+* peer dependencies version has changed to * ([0adbfe2](https://github.com/powerfulyang/components/commit/0adbfe2c60fa67e39e56f4bd07e8ddefcfe565d8))
+* todo add Dialog ([a62381f](https://github.com/powerfulyang/components/commit/a62381fc8b9f480dfdbe6a02cf1c49309419a8df))
+* todo add example ([b171de0](https://github.com/powerfulyang/components/commit/b171de0d343a76e1cf4d80b82e9962788d965f4c))
+* typescript explicitly ([32662b5](https://github.com/powerfulyang/components/commit/32662b516d3f394a51f802e92c7b076ea3cb4a71))
+
 ### [1.4.4](https://github.com/powerfulyang/components/compare/v1.4.3...v1.4.4) (2022-05-16)
 
 
