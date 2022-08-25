@@ -7,6 +7,11 @@
   --py-tooltip-z-index: 1000;
   --py-notification-z-index: 1000;
 
+  //
+  --theme-bg-color: rgba(16 18 27 / 40%);
+  --hover-menu-bg: rgba(12 15 25 / 30%);
+  --inactive-color: rgb(113 119 144 / 78%);
+
   #py-notification-collection {
     @apply fixed right-8 top-8;
 

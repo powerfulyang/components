@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button snapshot 1`] = `
+<div>
+  <button
+    class="rounded bg-purple-500 text-white px-3 py-1.5 text-base relative text-sm overflow-hidden"
+    type="button"
+  >
+    Button
+    <div
+      class="ripple-container"
+      role="none"
+    />
+  </button>
+</div>
+`;

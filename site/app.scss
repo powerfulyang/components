@@ -1,3 +1,22 @@
+html,
+body,
+#root {
+  @apply w-full h-full;
+}
+
 .app {
-  @apply p-4;
+  display: flex;
+  background-image: url('/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+
+  .main {
+    background-color: var(--theme-bg-color);
+    @apply w-full m-11 rounded-2xl;
+
+    .left-side {
+      overflow: auto;
+    }
+  }
 }

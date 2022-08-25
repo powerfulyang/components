@@ -3,6 +3,7 @@ import url from '@rollup/plugin-url';
 import { isProdProcess } from '@powerfulyang/utils';
 import typescript from '@rollup/plugin-typescript';
 import { createRequire } from 'module';
+import resolve from '@rollup/plugin-node-resolve';
 
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
@@ -30,6 +31,7 @@ export default {
     },
   ],
   plugins: [
+    resolve({ modulesOnly: true }),
     postcss({
       minimize: isProdProcess,
       extract: 'index.css',

@@ -1,62 +1,54 @@
 /* eslint-disable react/button-has-type */
-import React, { forwardRef, useState } from 'react';
+import type { MouseEvent } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import classNames from 'classnames';
 import './index.scss';
-import { motion } from 'framer-motion';
+import RippleEffect from '@/components/RippleEffect';
 
 type Props = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
->;
+> & {
+  ripple?: boolean;
+  shouldStopPropagation?: boolean;
+};
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ children, type, className, onClick, ...props }, ref) => {
-    const [position, setPosition] = useState({ left: 0, top: 0 });
-    const [rippling, setRippling] = useState(false);
+  (
+    {
+      children,
+      type = 'button',
+      className,
+      onClick,
+      shouldStopPropagation,
+      ripple = true,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
+    const handleClick = useCallback(
+      (e: MouseEvent<HTMLButtonElement>) => {
+        if (!disabled && onClick) {
+          onClick(e);
+        }
+        if (shouldStopPropagation) e.stopPropagation();
+      },
+      [disabled, onClick, shouldStopPropagation],
+    );
     return (
       <button
         {...props}
         ref={ref}
-        type={type || 'button'}
+        type={type}
         className={classNames(
           className,
-          'rounded bg-purple-500 text-white px-2 py-1 relative text-sm',
+          'rounded bg-purple-500 text-white px-3 py-1.5 text-base relative text-sm overflow-hidden',
         )}
-        onClick={(e) => {
-          onClick && onClick(e);
-          setRippling(true);
-          const { clientX, clientY } = e;
-          const { left, top } = (e.currentTarget as HTMLButtonElement).getBoundingClientRect();
-          setPosition({ left: clientX - left, top: clientY - top });
-        }}
+        onClick={handleClick}
       >
         {children}
-        {rippling && (
-          <div className="py-ripple-click">
-            <motion.div
-              className="py-ripple"
-              style={{
-                ...position,
-                x: '-50%',
-                y: '-50%',
-              }}
-              initial={{
-                scale: 0,
-                opacity: 1,
-              }}
-              animate={{
-                scale: 2.5,
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              onAnimationComplete={() => {
-                setRippling(false);
-              }}
-            />
-          </div>
-        )}
+        {ripple && !disabled && <RippleEffect />}
       </button>
     );
   },

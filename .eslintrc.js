@@ -9,7 +9,7 @@ module.exports = {
       'import/no-extraneous-dependencies': [
         'error',
         {
-          devDependencies: ['vite.config.ts', 'site/**/*.{ts,tsx}'],
+          devDependencies: ['vite.config.ts', 'site/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'],
         },
       ],
     },

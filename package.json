@@ -32,7 +32,6 @@
   },
   "sideEffects": false,
   "scripts": {
-    "bootstrap": "pnpm install --shamefully-hoist",
     "prettier": "prettier --write \"src/**/*.{tsx,ts,scss}\"",
     "lint:style": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --fix --ext .ts,.tsx ./src",
@@ -51,24 +50,29 @@
     "last 2 versions"
   ],
   "peerDependencies": {
+    "@powerfulyang/hooks": "*",
+    "@powerfulyang/utils": "*",
     "classnames": "*",
     "framer-motion": "*",
     "react": "*",
     "react-dom": "*",
-    "rxjs": "*",
-    "@powerfulyang/hooks": "*",
-    "@powerfulyang/utils": "*"
+    "reflect-metadata": "*",
+    "rxjs": "*"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "2.0.2",
+    "@powerfulyang/lint": "3.0.0",
+    "@rollup/plugin-node-resolve": "13.3.0",
     "@rollup/plugin-typescript": "8.4.0",
     "@rollup/plugin-url": "7.0.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
+    "@types/lodash-es": "*",
     "@vitejs/plugin-react": "2.0.1",
+    "lodash-es": "*",
+    "react-router-dom": "6.3.0",
     "rollup-plugin-postcss": "4.0.2",
-    "vite": "3.0.9",
+    "tailwindcss": "3.1.8",
     "typescript": "latest",
-    "tailwindcss": "3.1.8"
+    "vite": "3.0.9"
   }
 }

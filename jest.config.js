@@ -4,6 +4,8 @@ const tsconfig = require('./tsconfig.json');
 const moduleNameMapper = pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
   prefix: '<rootDir>/',
 });
+
+/** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
   moduleNameMapper: {
     ...moduleNameMapper,
@@ -12,10 +14,12 @@ module.exports = {
     // Handle image imports
     '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': require.resolve(`./__mocks__/fileMock.js`),
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js'],
-  preset: 'ts-jest',
   testMatch: ['**/*.spec.(ts|tsx)'],
-  testPathIgnorePatterns: ['./node_modules/', './dist/'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.ts'],
+  transform: {
+    '^.+\\.(ts|tsx)$': '@swc/jest',
+    '.js$': '@swc/jest',
+  },
+  transformIgnorePatterns: [`/node_modules/.pnpm/(?!lodash-es)`],
 };
