@@ -44,7 +44,8 @@
     "test": "jest --passWithNoTests",
     "precommit": "npm run ts-check && lint-staged && npm run test",
     "prepublishOnly": "npm run build",
-    "dev": "vite"
+    "dev": "vite",
+    "test:update:snapshot": "jest --updateSnapshot"
   },
   "browserslist": [
     "last 2 versions"

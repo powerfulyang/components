@@ -3,7 +3,7 @@
 exports[`Button snapshot 1`] = `
 <div>
   <button
-    class="rounded bg-purple-500 text-white px-3 py-1.5 text-base relative text-sm overflow-hidden"
+    class="relative overflow-hidden py-1.5 text-base text-base text-white rounded px-3 inline-flex items-center justify-center"
     type="button"
   >
     Button

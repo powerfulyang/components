@@ -8,7 +8,7 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const Icon: FC<IconProps> = memo(({ className, type, ...restProps }) => (
-  <svg className={classNames(className, 'py-super-icon')} {...restProps}>
+  <svg className={classNames(className, 'py-icon')} {...restProps}>
     <use xlinkHref={`#${type}`} />
   </svg>
 ));

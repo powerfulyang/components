@@ -14,11 +14,21 @@ type MenuItemProps = {
   menuKey: string | number;
 } & HTMLAttributes<HTMLUListElement>;
 
-export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({ menuKey, children, ...props }) => {
+export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
+  menuKey,
+  children,
+  onClick,
+  className,
+  ...props
+}) => {
   const { activeKey, setActiveKey } = React.useContext(MenuContext);
-  const handleChange = React.useCallback(() => {
-    setActiveKey(menuKey);
-  }, [menuKey, setActiveKey]);
+  const handleChange = React.useCallback(
+    (e) => {
+      setActiveKey(menuKey);
+      onClick?.(e);
+    },
+    [menuKey, onClick, setActiveKey],
+  );
   return (
     <ul
       {...props}
@@ -26,8 +36,11 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({ menuKey, childr
         {
           'bg-[color:var(--hover-menu-bg)]': menuKey === activeKey,
         },
-        'rounded cursor-pointer hover:bg-[color:var(--hover-menu-bg)] p-2 text-white my-0.5 text-sm',
-        props.className,
+        'my-0.5 p-2',
+        'cursor-pointer rounded',
+        'text-white',
+        'hover:bg-[color:var(--hover-menu-bg)]',
+        className,
       )}
       onClick={handleChange}
       role="presentation"
@@ -44,7 +57,7 @@ type MenuGroupProps = {
 const MenuGroup: FC<PropsWithChildren<MenuGroupProps>> = ({ title, children }) => {
   return (
     <li>
-      <div className="text-[color:var(--inactive-color)] mb-2 text-lg font-medium">{title}</div>
+      <div className="mb-2 text-lg font-medium text-[color:var(--inactive-color)]">{title}</div>
       {children}
     </li>
   );

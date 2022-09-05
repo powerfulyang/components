@@ -1,7 +1,9 @@
 html,
 body,
 #root {
-  @apply w-full h-full;
+  @apply h-full w-full;
+
+  font-size: 14px;
 }
 
 .app {
@@ -13,10 +15,14 @@ body,
 
   .main {
     background-color: var(--theme-bg-color);
-    @apply w-full m-11 rounded-2xl;
+    @apply m-11 flex w-full rounded-2xl;
 
     .left-side {
       overflow: auto;
+    }
+
+    .components-container {
+      @apply m-8;
     }
   }
 }

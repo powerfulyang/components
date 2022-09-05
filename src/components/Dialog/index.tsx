@@ -63,7 +63,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
           {visible && (
             <>
               {overlayElement || <Overlay />}
-              <motion.div className="fixed inset-0" onClick={handleOverlayClick}>
+              <motion.div role="dialog" className="fixed inset-0" onClick={handleOverlayClick}>
                 <motion.div
                   style={{
                     transformOrigin: `${startPosition.x}px ${startPosition.y}px`,
@@ -85,6 +85,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
                     ease: 'easeOut',
                   }}
                   className="pt-32"
+                  role="document"
                 >
                   <motion.div
                     className="contents"
