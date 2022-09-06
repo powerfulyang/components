@@ -14,8 +14,6 @@ module.exports = {
     // Handle image imports
     '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': require.resolve(`./__mocks__/fileMock.js`),
   },
-  testMatch: ['**/*.spec.(ts|tsx)'],
-  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': '@swc/jest',
