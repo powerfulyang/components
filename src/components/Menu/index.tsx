@@ -36,10 +36,9 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
         {
           'bg-[color:var(--hover-menu-bg)]': menuKey === activeKey,
         },
-        'my-0.5 p-2',
+        'p-2',
         'cursor-pointer rounded',
-        'text-white',
-        'hover:bg-[color:var(--hover-menu-bg)]',
+        { 'bg-[color:var(--hover-menu-bg)]': activeKey === menuKey },
         className,
       )}
       onClick={handleChange}
@@ -57,7 +56,7 @@ type MenuGroupProps = {
 const MenuGroup: FC<PropsWithChildren<MenuGroupProps>> = ({ title, children }) => {
   return (
     <li>
-      <div className="mb-2 text-lg font-medium text-[color:var(--inactive-color)]">{title}</div>
+      <div className="mb-2 text-lg font-medium">{title}</div>
       {children}
     </li>
   );
@@ -72,7 +71,7 @@ type MenuType = FC<PropsWithChildren<MenuProps>> & {
   Group: typeof MenuGroup;
 };
 
-export const Menu: MenuType = ({ children, defaultActiveKey }) => {
+export const Menu: MenuType = ({ children, className, defaultActiveKey }) => {
   const [activeKey, setActiveKey] = React.useState<string | number | null>(() => {
     return defaultActiveKey || null;
   });
@@ -80,7 +79,7 @@ export const Menu: MenuType = ({ children, defaultActiveKey }) => {
 
   return (
     <MenuContext.Provider value={contextValue}>
-      <ul className="p-4">{children}</ul>
+      <ul className={classNames(className)}>{children}</ul>
     </MenuContext.Provider>
   );
 };

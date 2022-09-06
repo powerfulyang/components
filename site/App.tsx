@@ -5,14 +5,15 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components';
 import { ButtonComponents } from './pages/Button';
 import { DialogComponents } from './pages/Dialog';
+import { DropdownComponents } from './pages/Dropdown';
 
 const App = () => {
   const navigate = useNavigate();
   return (
     <div className="app">
       <div className="main">
-        <div className="left-side w-[200px]">
-          <Menu className="">
+        <div className="left-side basis-[300px]">
+          <Menu>
             <Menu.Group title="Components">
               <Menu.Item
                 menuKey="Button"
@@ -38,6 +39,14 @@ const App = () => {
               >
                 Skeleton
               </Menu.Item>
+              <Menu.Item
+                menuKey="Dropdown"
+                onClick={() => {
+                  navigate('/dropdown');
+                }}
+              >
+                Dropdown
+              </Menu.Item>
             </Menu.Group>
           </Menu>
         </div>
@@ -47,6 +56,7 @@ const App = () => {
             <Route path="/button" element={<ButtonComponents />} />
             <Route path="/dialog" element={<DialogComponents />} />
             <Route path="/skeleton" element={<Skeleton />} />
+            <Route path="/dropdown" element={<DropdownComponents />} />
           </Routes>
         </div>
       </div>

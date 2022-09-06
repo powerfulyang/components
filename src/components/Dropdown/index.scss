@@ -1,0 +1,11 @@
+.py-dropdown-enter {
+  @apply scale-100 transform opacity-100 ease-out;
+}
+
+.py-dropdown-leave {
+  @apply pointer-events-none scale-95 transform opacity-0 ease-in;
+}
+
+.py-dropdown-animate {
+  @apply transition duration-100;
+}
