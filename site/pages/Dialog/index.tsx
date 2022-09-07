@@ -10,6 +10,7 @@ export const DialogComponents = () => {
         onClick={() => {
           setVisible(true);
         }}
+        appearance="primary"
       >
         弹出 Modal
       </Button>

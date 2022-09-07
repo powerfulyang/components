@@ -1,0 +1,27 @@
+.py-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  transition: background 150ms ease;
+  border: 2px solid #211076;
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(33, 16, 118, 0.5);
+  }
+
+  &:after {
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 6px;
+    height: 12px;
+    content: '';
+    transition: all 325ms ease;
+    transform: rotate(45deg) scale(0);
+    opacity: 0;
+    border-right: 2px solid #bf6bfe;
+    border-bottom: 2px solid #bf6bfe;
+  }
+}

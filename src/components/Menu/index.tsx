@@ -1,10 +1,12 @@
-import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
-import React, { createContext, useMemo } from 'react';
+import type { DetailedHTMLProps, FC, HTMLAttributes, PropsWithChildren } from 'react';
+import React, { createContext, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 
 const MenuContext = createContext<{
   activeKey: string | number | null;
   setActiveKey: (key: string | number) => void;
+  activeItemClassName?: string;
+  itemClassName?: string;
 }>({
   activeKey: null,
   setActiveKey: () => {},
@@ -12,6 +14,7 @@ const MenuContext = createContext<{
 
 type MenuItemProps = {
   menuKey: string | number;
+  activeClassName?: string;
 } & HTMLAttributes<HTMLUListElement>;
 
 export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
@@ -19,9 +22,15 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
   children,
   onClick,
   className,
+  activeClassName = '',
   ...props
 }) => {
-  const { activeKey, setActiveKey } = React.useContext(MenuContext);
+  const {
+    activeKey,
+    setActiveKey,
+    activeItemClassName = '',
+    itemClassName = '',
+  } = React.useContext(MenuContext);
   const handleChange = React.useCallback(
     (e) => {
       setActiveKey(menuKey);
@@ -29,16 +38,17 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
     },
     [menuKey, onClick, setActiveKey],
   );
+
   return (
     <ul
       {...props}
       className={classNames(
-        {
-          'bg-[color:var(--hover-menu-bg)]': menuKey === activeKey,
-        },
-        'p-2',
+        'px-3 py-2',
         'cursor-pointer rounded',
-        { 'bg-[color:var(--hover-menu-bg)]': activeKey === menuKey },
+        {
+          [activeItemClassName || activeClassName]: activeKey === menuKey,
+          [itemClassName]: true,
+        },
         className,
       )}
       onClick={handleChange}
@@ -51,12 +61,12 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
 
 type MenuGroupProps = {
   title: string;
-};
+} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
-const MenuGroup: FC<PropsWithChildren<MenuGroupProps>> = ({ title, children }) => {
+const MenuGroup: FC<PropsWithChildren<MenuGroupProps>> = ({ title, className, children }) => {
   return (
     <li>
-      <div className="mb-2 text-lg font-medium">{title}</div>
+      <div className={classNames('mb-2 text-lg', className)}>{title}</div>
       {children}
     </li>
   );
@@ -64,6 +74,10 @@ const MenuGroup: FC<PropsWithChildren<MenuGroupProps>> = ({ title, children }) =
 
 type MenuProps = {
   defaultActiveKey?: string | number | null;
+  activeKey?: string | number | null;
+  onMenuChange?: (key: string | number) => void;
+  activeItemClassName?: string;
+  itemClassName?: string;
 } & HTMLAttributes<HTMLUListElement>;
 
 type MenuType = FC<PropsWithChildren<MenuProps>> & {
@@ -71,11 +85,34 @@ type MenuType = FC<PropsWithChildren<MenuProps>> & {
   Group: typeof MenuGroup;
 };
 
-export const Menu: MenuType = ({ children, className, defaultActiveKey }) => {
-  const [activeKey, setActiveKey] = React.useState<string | number | null>(() => {
+export const Menu: MenuType = ({
+  children,
+  className,
+  defaultActiveKey,
+  activeKey,
+  onMenuChange,
+  activeItemClassName,
+  itemClassName,
+}) => {
+  const [active, setActive] = React.useState<string | number | null>(() => {
     return defaultActiveKey || null;
   });
-  const contextValue = useMemo(() => ({ activeKey, setActiveKey }), [activeKey, setActiveKey]);
+
+  useEffect(() => {
+    if (active) {
+      onMenuChange?.(active);
+    }
+  }, [active, onMenuChange]);
+
+  const contextValue = useMemo(
+    () => ({
+      activeKey: activeKey || active,
+      setActiveKey: setActive,
+      activeItemClassName,
+      itemClassName,
+    }),
+    [active, activeItemClassName, activeKey, itemClassName],
+  );
 
   return (
     <MenuContext.Provider value={contextValue}>

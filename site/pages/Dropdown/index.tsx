@@ -6,10 +6,16 @@ import { Menu } from '@/components/Menu';
 
 const Overlay: FC = () => {
   return (
-    <Menu>
-      <Menu.Item menuKey="1" title="Components">
-        111
-      </Menu.Item>
+    <Menu itemClassName="hover:bg-pink-200">
+      <div className="divide-y divide-gray-200">
+        <div className="p-1">
+          <Menu.Item menuKey="1">Option 1</Menu.Item>
+          <Menu.Item menuKey="2">Option 2</Menu.Item>
+        </div>
+        <div className="p-1">
+          <Menu.Item menuKey="3">Option 3</Menu.Item>
+        </div>
+      </div>
     </Menu>
   );
 };
