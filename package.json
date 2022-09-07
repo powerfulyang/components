@@ -55,11 +55,11 @@
     "@powerfulyang/utils": "*",
     "classnames": "*",
     "framer-motion": "*",
+    "lodash-es": "*",
     "react": "*",
     "react-dom": "*",
     "reflect-metadata": "*",
-    "rxjs": "*",
-    "lodash-es": "*"
+    "rxjs": "*"
   },
   "devDependencies": {
     "@powerfulyang/lint": "3.1.0",
@@ -74,5 +74,16 @@
     "tailwindcss": "3.1.8",
     "typescript": "latest",
     "vite": "3.1.0"
+  },
+  "dependencies": {
+    "@powerfulyang/hooks": "*",
+    "@powerfulyang/utils": "*",
+    "classnames": "*",
+    "framer-motion": "*",
+    "lodash-es": "*",
+    "react": "*",
+    "react-dom": "*",
+    "reflect-metadata": "*",
+    "rxjs": "*"
   }
 }
