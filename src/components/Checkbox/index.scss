@@ -1,23 +1,29 @@
 @keyframes wiggle {
-  from {
+  0% {
     transform: scale(1, 1);
   }
+
   30% {
     transform: scale(1.25, 0.75);
   }
+
   40% {
     transform: scale(0.75, 1.25);
   }
+
   50% {
     transform: scale(1.15, 0.85);
   }
+
   65% {
     transform: scale(0.95, 1.05);
   }
+
   75% {
     transform: scale(1.05, 0.95);
   }
-  to {
+
+  100% {
     transform: scale(1, 1);
   }
 }
@@ -43,12 +49,6 @@
     border-radius: 2px;
   }
 
-  &:not(:checked, :indeterminate) + &__marker {
-    &:hover {
-      background-color: var(--checkbox-radio-bg-color-hover);
-    }
-  }
-
   &:is(:checked, :indeterminate) + &__marker {
     display: flex;
     justify-content: center;
@@ -58,6 +58,12 @@
 
   &:checked + &__marker {
     animation: wiggle 0.4s ease;
+  }
+
+  &:not(:checked, :indeterminate) + &__marker {
+    &:hover {
+      background-color: var(--checkbox-radio-bg-color-hover);
+    }
   }
 
   &:checked + &__marker > &__checked {

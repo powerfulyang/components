@@ -1,8 +1,9 @@
 import { Menu } from '@/components/Menu';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
+import { capitalize } from 'lodash-es';
 import { ButtonComponents } from '../Button';
 import { DialogComponents } from '../Dialog';
 import { DropdownComponents } from '../Dropdown';
@@ -13,15 +14,21 @@ const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox', 'Rad
 
 export const Components: FC = () => {
   const navigate = useNavigate();
-  const [active, setActive] = React.useState<string | number>('Button');
+  const location = useLocation();
+
+  const activeKey = useMemo(() => {
+    const defaultKey = components[0];
+    return capitalize(location.pathname.split('/').pop()) || defaultKey;
+  }, [location.pathname]);
+
   return (
     <div className="flex">
       <div className="left-side basis-[250px]">
         <Menu
-          onMenuChange={(v) => {
-            setActive(v);
+          onMenuChange={(v: string) => {
+            navigate(`/components/${v.toLowerCase()}`);
           }}
-          activeKey={active}
+          activeKey={activeKey}
           className="p-6 font-light text-white"
           activeItemClassName="bg-[color:var(--hover-menu-bg)]"
         >

@@ -1,0 +1,44 @@
+.py-radio {
+  opacity: 0;
+  cursor: pointer;
+
+  &__marker {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid var(--checkbox-radio-bg-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .py-radio-dot {
+      width: 70%;
+      height: 70%;
+      background-color: var(--checkbox-radio-bg-color);
+      border-radius: 100%;
+      transition: transform 0.4s ease, opacity 0.2s ease;
+      transform-origin: center;
+      isolation: isolate;
+    }
+  }
+
+  &:checked + &__marker {
+    .py-radio-dot {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &:not(:checked) + &__marker {
+    .py-radio-dot {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  &:not(:checked) + &__marker:hover {
+    background-color: var(--checkbox-radio-bg-color-hover);
+  }
+}

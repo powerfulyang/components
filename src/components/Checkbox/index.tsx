@@ -15,7 +15,7 @@ export type CheckboxProps = React.DetailedHTMLProps<
 export const Checkbox: FC<PropsWithChildren<CheckboxProps>> = forwardRef<
   HTMLInputElement,
   CheckboxProps
->(({ id, className, children, indeterminate, ...props }) => {
+>(({ id, className, children, indeterminate, ...props }, ref) => {
   const elementId = useId();
 
   const inputId = id || elementId;
@@ -30,6 +30,7 @@ export const Checkbox: FC<PropsWithChildren<CheckboxProps>> = forwardRef<
     <label htmlFor={inputId} className="relative cursor-pointer">
       <input
         {...props}
+        ref={ref}
         type="checkbox"
         id={inputId}
         className={classNames('py-checkbox', className)}

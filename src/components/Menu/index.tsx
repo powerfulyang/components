@@ -1,6 +1,7 @@
 import type { DetailedHTMLProps, FC, HTMLAttributes, PropsWithChildren } from 'react';
 import React, { createContext, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
+import { useLatest } from '@/hooks/useLatest';
 
 const MenuContext = createContext<{
   activeKey: string | number | null;
@@ -98,11 +99,13 @@ export const Menu: MenuType = ({
     return defaultActiveKey || null;
   });
 
+  const handleMenuChange = useLatest(onMenuChange);
+
   useEffect(() => {
     if (active) {
-      onMenuChange?.(active);
+      handleMenuChange.current?.(active);
     }
-  }, [active, onMenuChange]);
+  }, [active, handleMenuChange]);
 
   const contextValue = useMemo(
     () => ({
