@@ -6,7 +6,7 @@ import './index.scss';
 import RippleEffect from '@/components/RippleEffect';
 import { Icon } from '@/components/Icon';
 
-type Props = React.DetailedHTMLProps<
+export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
@@ -18,7 +18,7 @@ type Props = React.DetailedHTMLProps<
   loading?: boolean;
 };
 
-export const Button = forwardRef<HTMLButtonElement, Props>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,

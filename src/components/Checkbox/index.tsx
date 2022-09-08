@@ -1,23 +1,46 @@
-import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
-import React, { useId } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import React, { forwardRef, useId } from 'react';
 import './index.scss';
+import classNames from 'classnames';
+import { Icon } from '@/components';
+import { useIsomorphicLayoutEffect } from '@powerfulyang/hooks';
 
-export type CheckboxProps = HTMLAttributes<HTMLInputElement>;
-
-export const Checkbox: FC<PropsWithChildren<CheckboxProps>> = ({
-  id,
-  className,
-  children,
-  ...props
-}) => {
-  const elementId = useId();
-  return (
-    <>
-      <input {...props} className="hidden" type="checkbox" id={id || elementId} />
-      <label htmlFor={id || elementId} className="flex cursor-pointer items-center">
-        <span className="py-checkbox" />
-        <span className="ml-2">{children}</span>
-      </label>
-    </>
-  );
+export type CheckboxProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  indeterminate?: boolean;
 };
+
+export const Checkbox: FC<PropsWithChildren<CheckboxProps>> = forwardRef<
+  HTMLInputElement,
+  CheckboxProps
+>(({ id, className, children, indeterminate, ...props }) => {
+  const elementId = useId();
+
+  const inputId = id || elementId;
+
+  useIsomorphicLayoutEffect(() => {
+    if (indeterminate !== undefined) {
+      (document.getElementById(inputId) as HTMLInputElement).indeterminate = indeterminate;
+    }
+  }, [indeterminate, inputId]);
+
+  return (
+    <label htmlFor={inputId} className="relative cursor-pointer">
+      <input
+        {...props}
+        type="checkbox"
+        id={inputId}
+        className={classNames('py-checkbox', className)}
+      />
+      <span className="py-checkbox__marker">
+        <Icon className="py-checkbox__checked" type="icon-checked" />
+        <Icon className="py-checkbox__indeterminate" type="icon-indeterminate" />
+      </span>
+      <span className="ml-4 mr-3">{children}</span>
+    </label>
+  );
+});
+
+Checkbox.displayName = 'Checkbox';

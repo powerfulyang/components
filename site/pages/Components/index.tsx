@@ -7,8 +7,9 @@ import { ButtonComponents } from '../Button';
 import { DialogComponents } from '../Dialog';
 import { DropdownComponents } from '../Dropdown';
 import { CheckboxComponents } from '../Checkbox';
+import { RadioComponents } from '../Radio';
 
-const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox'];
+const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox', 'Radio'];
 
 export const Components: FC = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export const Components: FC = () => {
           <Route path="/skeleton" element={<Skeleton />} />
           <Route path="/dropdown" element={<DropdownComponents />} />
           <Route path="/checkbox" element={<CheckboxComponents />} />
+          <Route path="/radio" element={<RadioComponents />} />
         </Routes>
       </div>
     </div>
