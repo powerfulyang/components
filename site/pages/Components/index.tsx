@@ -10,8 +10,18 @@ import { DropdownComponents } from '../Dropdown';
 import { CheckboxComponents } from '../Checkbox';
 import { RadioComponents } from '../Radio';
 import { SwitchComponents } from '../Switch';
+import { TooltipComponents } from '../Tooltip';
 
-const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox', 'Radio', 'Switch'];
+const components = [
+  'Button',
+  'Dialog',
+  'Skeleton',
+  'Dropdown',
+  'Checkbox',
+  'Radio',
+  'Switch',
+  'Tooltip',
+];
 
 export const Components: FC = () => {
   const navigate = useNavigate();
@@ -62,6 +72,7 @@ export const Components: FC = () => {
           <Route path="/checkbox" element={<CheckboxComponents />} />
           <Route path="/radio" element={<RadioComponents />} />
           <Route path="/switch" element={<SwitchComponents />} />
+          <Route path="/tooltip" element={<TooltipComponents />} />
         </Routes>
       </div>
     </div>

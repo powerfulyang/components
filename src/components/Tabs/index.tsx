@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import { useLatest } from '@/hooks/useLatest';
+import { useLatest } from '@powerfulyang/hooks';
 
 export const TabsContext = createContext<{
   activeTabKey?: string;

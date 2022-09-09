@@ -1,7 +1,7 @@
 import type { DetailedHTMLProps, FC, HTMLAttributes, PropsWithChildren } from 'react';
 import React, { createContext, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import { useLatest } from '@/hooks/useLatest';
+import { useLatest } from '@powerfulyang/hooks';
 
 const MenuContext = createContext<{
   activeKey: string | number | null;
