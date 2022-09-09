@@ -6,7 +6,7 @@ $skeleton-color: rgb(190 190 190 / 20%);
 $skeleton-to-color: --custom-shade($skeleton-color, 5%);
 
 .py-skeleton {
-  @apply w-full h-full;
+  @apply h-full w-full;
 
   &__row {
     background: linear-gradient(
@@ -18,7 +18,7 @@ $skeleton-to-color: --custom-shade($skeleton-color, 5%);
     background-size: 400% 100%;
     border-radius: 5px;
     animation: skeleton-loading 1.4s ease infinite;
-    @apply h-4 my-4;
+    @apply my-4 h-4;
 
     &:first-child {
       @apply w-1/2;

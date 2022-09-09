@@ -8,8 +8,8 @@
   --py-notification-z-index: 1000;
 
   // checkbox radio bg color
-  --checkbox-radio-bg-color: rgba(33, 16, 118);
-  --checkbox-radio-bg-color-hover: rgba(33, 16, 118, 0.5);
+  --checkbox-radio-bg-color: rgb(33 16 118);
+  --checkbox-radio-bg-color-hover: rgb(33 16 118 / 50%);
 
   //
   --theme-bg-color: rgba(16 18 27 / 40%);
@@ -25,7 +25,7 @@
   --dropdown-hover: rgb(42 46 60);
   --popup-bg: rgb(22 25 37);
   --search-bg: #14162b;
-  --overlay-bg: rgba(36, 39, 59, 0.3);
+  --overlay-bg: rgb(36 39 59 / 30%);
   --scrollbar-bg: rgb(1 2 3 / 40%);
 
   #py-notification-collection {

@@ -33,6 +33,7 @@
 
   &:checked + &__marker {
     background-color: var(--checkbox-radio-bg-color-hover);
+
     .py-switch-dot {
       right: 0;
       transform: translateX(-10%);
@@ -45,6 +46,7 @@
 
   &:not(:checked) + &__marker {
     background-color: #eee;
+
     .py-switch-dot {
       right: 100%;
       transform: translateX(10% + 100%);

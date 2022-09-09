@@ -2,7 +2,7 @@
   max-width: 25rem;
   width: auto;
   box-shadow: 0 0 10px 5px rgb(160 44 219 / 7%);
-  @apply flex rounded bg-white p-4 items-start mb-4;
+  @apply mb-4 flex items-start rounded bg-white p-4;
 
   .status {
     @apply text-2xl;
@@ -21,11 +21,11 @@
   }
 
   .title {
-    @apply text-lg font-medium mx-1;
+    @apply mx-1 text-lg font-medium;
   }
 
   .content {
-    @apply text-gray-400 text-base break-all;
+    @apply break-all text-base text-gray-400;
   }
 
   .close {

@@ -8,6 +8,16 @@
   color: white;
   transform-origin: bottom;
 
+  &::before {
+    position: absolute;
+    content: '';
+    height: 8px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+  }
+
   &::after {
     position: absolute;
     content: '';

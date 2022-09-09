@@ -1,7 +1,7 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { FC, MouseEvent, PropsWithChildren } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { useIsomorphicLayoutEffect, usePortal } from '@powerfulyang/hooks';
-import { delay, fromEvent } from 'rxjs';
+import { fromEvent, map, merge } from 'rxjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import './index.scss';
 
@@ -25,19 +25,18 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ title, children }
 
   useEffect(() => {
     if (ref.current) {
-      const enter$ = fromEvent(ref.current, 'mouseenter')
-        .pipe(delay(100))
-        .subscribe(() => {
-          setShow(true);
-        });
-      const leave$ = fromEvent(ref.current, 'mouseleave')
-        .pipe(delay(100))
-        .subscribe(() => {
-          setShow(false);
-        });
+      const rEnter$ = fromEvent<MouseEvent>(ref.current, 'mouseenter');
+      const rLeave$ = fromEvent<MouseEvent>(ref.current, 'mouseleave');
+      const sub = merge(
+        rEnter$.pipe(map(() => true)), //
+        rLeave$.pipe(
+          map(() => {
+            return !!document.querySelector('.py-tooltip:hover');
+          }),
+        ), //
+      ).subscribe(setShow);
       return () => {
-        enter$.unsubscribe();
-        leave$.unsubscribe();
+        sub.unsubscribe();
       };
     }
     return () => {};
@@ -54,12 +53,19 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ title, children }
             <motion.div
               style={{
                 x: `calc(${x}px - 50%)`,
-                y: `calc(${y}px - 100% - 10px)`,
+                y: `calc(${y}px - 100% - 8px)`,
               }}
               className="py-tooltip"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.1 }}
+              onHoverStart={() => {
+                setShow(true);
+              }}
+              onHoverEnd={() => {
+                setShow(false);
+              }}
             >
               {title}
             </motion.div>
