@@ -9,8 +9,9 @@ import { DialogComponents } from '../Dialog';
 import { DropdownComponents } from '../Dropdown';
 import { CheckboxComponents } from '../Checkbox';
 import { RadioComponents } from '../Radio';
+import { SwitchComponents } from '../Switch';
 
-const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox', 'Radio'];
+const components = ['Button', 'Dialog', 'Skeleton', 'Dropdown', 'Checkbox', 'Radio', 'Switch'];
 
 export const Components: FC = () => {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ export const Components: FC = () => {
 
   const activeKey = useMemo(() => {
     const defaultKey = components[0];
+    if (location.pathname === '/components') {
+      return defaultKey;
+    }
     return capitalize(location.pathname.split('/').pop()) || defaultKey;
   }, [location.pathname]);
 
@@ -57,6 +61,7 @@ export const Components: FC = () => {
           <Route path="/dropdown" element={<DropdownComponents />} />
           <Route path="/checkbox" element={<CheckboxComponents />} />
           <Route path="/radio" element={<RadioComponents />} />
+          <Route path="/switch" element={<SwitchComponents />} />
         </Routes>
       </div>
     </div>

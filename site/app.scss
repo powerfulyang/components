@@ -51,17 +51,12 @@ body,
     a {
       padding: 17px 30px;
       text-decoration: none;
-      color: var(--inactive-color);
       border-bottom: 2px solid transparent;
       transition: 0.3s;
       @media screen and (max-width: 610px) {
         &:not(.main-header-link) {
           display: none;
         }
-      }
-
-      &:hover {
-        color: var(--theme-color);
       }
     }
   }

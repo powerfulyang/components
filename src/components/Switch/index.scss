@@ -1,0 +1,59 @@
+.py-switch {
+  opacity: 0;
+  cursor: pointer;
+
+  &__marker {
+    position: relative;
+    width: 70px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+
+    &::before {
+      position: absolute;
+      width: 70%;
+      color: white;
+      font-size: 1em;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .py-switch-dot {
+      position: absolute;
+      height: 80%;
+      aspect-ratio: 1 / 1;
+      background-color: var(--checkbox-radio-bg-color);
+      border-radius: 100%;
+      transition: all 0.4s ease;
+      transform-origin: center;
+      isolation: isolate;
+    }
+  }
+
+  &:checked + &__marker {
+    background-color: var(--checkbox-radio-bg-color-hover);
+    .py-switch-dot {
+      right: 0;
+      transform: translateX(-10%);
+    }
+
+    &::before {
+      content: attr(data-checked-desc);
+    }
+  }
+
+  &:not(:checked) + &__marker {
+    background-color: #eee;
+    .py-switch-dot {
+      right: 100%;
+      transform: translateX(10% + 100%);
+    }
+
+    &::before {
+      content: attr(data-unchecked-desc);
+      right: 0;
+      color: var(--checkbox-radio-bg-color);
+    }
+  }
+}

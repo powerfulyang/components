@@ -10,7 +10,12 @@ const App = () => {
       <div className="main">
         <div className="header">
           <div className="menu-circle" />
-          <Tabs className="header-menu">
+          <Tabs
+            tabClassName="hover:text-white text-[color:var(--inactive-color)]"
+            className="header-menu"
+            activeClassName="!text-white"
+            defaultActiveTabKey="1"
+          >
             <Tab tabKey="1">
               <Link to="/components">Components</Link>
             </Tab>
