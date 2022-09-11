@@ -3,17 +3,20 @@ import { Button, Dialog, Icon } from '@/components';
 import type { FC, PropsWithChildren } from 'react';
 import React from 'react';
 import './index.scss';
+import { useLatest } from '@powerfulyang/hooks';
 
 export type ModalProps = {
   title?: string;
+  onOk?: () => void;
 } & DialogProps;
 
-export const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, title, ...props }) => {
+export const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, title, onOk, ...props }) => {
+  const handleOk = useLatest(onOk);
   return (
-    <Dialog {...props}>
+    <Dialog {...props} className="pt-32" mode="modal">
       <div className="py-modal-container px-8 py-6">
         <div className="mb-4 flex items-center justify-between">
-          <div className="text-xl font-medium">{title}</div>
+          <div className="text-xl">{title}</div>
           <Icon className="cursor-pointer text-2xl" type="icon-close" onClick={props.onClose} />
         </div>
         {children}
@@ -21,7 +24,9 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, title, ...p
           <Button appearance="ghost" className="text-black" onClick={props.onClose}>
             取消
           </Button>
-          <Button appearance="primary">确认</Button>
+          <Button onClick={handleOk.current} appearance="primary">
+            确认
+          </Button>
         </div>
       </div>
     </Dialog>

@@ -1,6 +1,6 @@
 import type { FC, MouseEvent, PropsWithChildren } from 'react';
 import React, { useEffect, useRef } from 'react';
-import { useIsomorphicLayoutEffect, usePortal } from '@powerfulyang/hooks';
+import { usePortal } from '@powerfulyang/hooks';
 import { fromEvent, map, merge } from 'rxjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import './index.scss';
@@ -15,14 +15,6 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ title, children }
   const [show, setShow] = React.useState(false);
   const [{ x, y }, setPosition] = React.useState({ x: 0, y: 0 });
 
-  useIsomorphicLayoutEffect(() => {
-    if (ref.current) {
-      const { top, left, right } = ref.current.getBoundingClientRect();
-      const centerX = (left + right) / 2;
-      setPosition({ x: centerX, y: top });
-    }
-  }, []);
-
   useEffect(() => {
     if (ref.current) {
       const rEnter$ = fromEvent<MouseEvent>(ref.current, 'mouseenter');
@@ -34,7 +26,14 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({ title, children }
             return !!document.querySelector('.py-tooltip:hover');
           }),
         ), //
-      ).subscribe(setShow);
+      ).subscribe((value) => {
+        if (value && ref.current) {
+          const { top, left, right } = ref.current.getBoundingClientRect();
+          const centerX = (left + right) / 2;
+          setPosition({ x: centerX, y: top });
+        }
+        setShow(value);
+      });
       return () => {
         sub.unsubscribe();
       };

@@ -49,6 +49,10 @@
     border-radius: 2px;
   }
 
+  &:focus-visible + &__marker {
+    outline: #3a6df0 auto 1px;
+  }
+
   &:is(:checked, :indeterminate) + &__marker {
     display: flex;
     justify-content: center;

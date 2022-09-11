@@ -4,7 +4,7 @@
   top: 0;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: var(--theme-bg-color);
+  background-color: var(--tooltip-bg-color);
   color: white;
   transform-origin: bottom;
 
@@ -23,7 +23,7 @@
     content: '';
     width: 0;
     height: 0;
-    border-top: 5px solid var(--theme-bg-color);
+    border-top: 5px solid var(--tooltip-bg-color);
     border-right: 5px solid transparent;
     border-bottom: 0 solid transparent;
     border-left: 5px solid transparent;

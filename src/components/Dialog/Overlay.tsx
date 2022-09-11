@@ -27,6 +27,9 @@ export const Overlay: FC<MaskProps> = () => {
       initial="initial"
       animate="animate"
       exit="exit"
+      transition={{
+        duration: 0.3,
+      }}
       className={classNames('absolute inset-0 bg-black/[0.45]')}
     />
   );

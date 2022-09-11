@@ -1,10 +1,12 @@
 import type { FC, PropsWithChildren, ReactElement } from 'react';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePortal } from '@powerfulyang/hooks';
 import { Overlay } from '@/components/Dialog/Overlay';
 import { DialogContext } from '@/components/Dialog/DialogContext';
+import type { MotionProps } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fromEvent } from 'rxjs';
+import classNames from 'classnames';
 
 export type DialogProps = {
   visible?: boolean;
@@ -12,6 +14,8 @@ export type DialogProps = {
   overlayClosable?: boolean;
   onClose?: VoidFunction;
   overlayElement?: ReactElement;
+  className?: string;
+  mode?: 'modal' | 'drawer';
 };
 
 export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
@@ -21,15 +25,17 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   overlayClosable = true,
   onClose,
   overlayElement,
+  className,
+  mode,
 }) => {
-  const dialogNode = useRef(document.createElement('section'));
-  const Portal = usePortal(dialogNode.current);
+  const Portal = usePortal();
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const subscription = fromEvent<MouseEvent>(document, 'click').subscribe((e) => {
       if (visible) {
         setStartPosition({ x: e.clientX, y: e.clientY });
+        subscription.unsubscribe();
       }
     });
     return () => {
@@ -37,17 +43,9 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
     };
   }, [visible]);
 
-  useEffect(() => {
-    if (visible) {
-      const dialog = dialogNode.current;
-      const parent = document.body;
-      parent.appendChild(dialog);
-    }
-  }, [visible]);
   const context = useMemo(() => ({ visible }), [visible]);
 
   const handleAfterClose = useCallback(() => {
-    document.body.removeChild(dialogNode.current);
     setStartPosition({ x: 0, y: 0 });
     afterClose && afterClose();
   }, [afterClose]);
@@ -55,6 +53,33 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   const handleOverlayClick = useCallback(() => {
     overlayClosable && onClose && onClose();
   }, [overlayClosable, onClose]);
+
+  const documentProps = useMemo((): MotionProps => {
+    if (mode === 'modal') {
+      return {
+        style: {
+          transformOrigin: `${startPosition.x}px ${startPosition.y}px`,
+        },
+        initial: {
+          opacity: 0,
+          scale: 0,
+        },
+        animate: {
+          opacity: 1,
+          scale: 1,
+        },
+        exit: {
+          opacity: 0,
+          scale: 0.35,
+          transition: {
+            type: 'keyframes',
+            ease: 'easeInOut',
+          },
+        },
+      };
+    }
+    return {};
+  }, [mode, startPosition]);
 
   return (
     <Portal>
@@ -64,29 +89,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
             <>
               {overlayElement || <Overlay />}
               <motion.div role="dialog" className="fixed inset-0" onClick={handleOverlayClick}>
-                <motion.div
-                  style={{
-                    transformOrigin: `${startPosition.x}px ${startPosition.y}px`,
-                  }}
-                  initial={{
-                    opacity: 0,
-                    scale: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.35,
-                  }}
-                  transition={{
-                    type: 'keyframes',
-                    ease: 'easeOut',
-                  }}
-                  className="pt-32"
-                  role="document"
-                >
+                <motion.div {...documentProps} role="document" className={classNames(className)}>
                   <motion.div
                     className="contents"
                     onClick={(e) => {

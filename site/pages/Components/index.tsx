@@ -43,10 +43,11 @@ export const Components: FC = () => {
             navigate(`/components/${v.toLowerCase()}`);
           }}
           activeKey={activeKey}
-          className="p-6 font-light text-white"
-          activeItemClassName="bg-[color:var(--hover-menu-bg)]"
+          className="p-6 text-white"
+          activeItemClassName="!bg-[color:var(--active-menu-bg)]"
+          itemClassName="hover:bg-[color:var(--hover-menu-bg)] "
         >
-          <Menu.Group className="font-normal text-[color:var(--inactive-color)]" title="Components">
+          <Menu.Group className="text-[color:var(--inactive-color)]" title="Components">
             {components.map((item) => (
               <Menu.Item
                 menuKey={item}

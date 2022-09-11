@@ -31,6 +31,10 @@
     }
   }
 
+  &:focus-visible + &__marker {
+    outline: #3a6df0 auto 1px;
+  }
+
   &:checked + &__marker {
     background-color: var(--checkbox-radio-bg-color-hover);
 
