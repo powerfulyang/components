@@ -18,7 +18,8 @@ body,
   .main {
     background-color: var(--theme-bg-color);
     backdrop-filter: blur(20px);
-    @apply my-11 mx-auto rounded-2xl;
+    max-width: 1400px;
+    @apply my-11 mx-auto w-[90%] rounded-2xl;
 
     .left-side {
       overflow: auto;
