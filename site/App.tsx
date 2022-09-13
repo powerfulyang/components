@@ -1,36 +1,36 @@
 import React from 'react';
 import './app.scss';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Tab, Tabs } from '@/components/Tabs';
 import { Components } from './pages/Components';
 
 const App = () => {
+  const navigate = useNavigate();
   return (
     <div className="app">
       <div className="main">
         <div className="header">
           <div className="menu-circle" />
           <Tabs
-            tabClassName="hover:text-white text-[color:var(--inactive-color)]"
+            tabClassName="hover:text-white text-[color:var(--inactive-color)] focus-visible:text-white focus-visible:outline-none"
             className="header-menu"
             activeClassName="!text-white"
-            defaultActiveTabKey="1"
+            defaultActiveTabKey="Components"
+            onTabChange={(key) => {
+              navigate(`/${key}`);
+            }}
           >
-            <Tab tabKey="1">
-              <Link to="/components">Components</Link>
+            <Tab tabKey="Components" className="header-menu-item">
+              Components
             </Tab>
-            <Tab tabKey="2">
-              <Link to="/a" className="notify">
-                Your work
-              </Link>
+            <Tab tabKey="2" className="notify header-menu-item">
+              Your work
             </Tab>
-            <Tab tabKey="3">
-              <Link to="/a">Discover</Link>
+            <Tab tabKey="3" className="header-menu-item">
+              Discover
             </Tab>
-            <Tab tabKey="4">
-              <Link to="/a" className="notify">
-                Market
-              </Link>
+            <Tab tabKey="4" className="notify header-menu-item">
+              Market
             </Tab>
           </Tabs>
           <div className="search-bar">

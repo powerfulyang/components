@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { MenuItem } from '@/components/Menu/MenuItem';
 import { MenuGroup } from '@/components/Menu/MenuGroup';
@@ -12,31 +12,28 @@ export const Menu: MenuType = ({
   defaultActiveKey,
   activeKey,
   onMenuChange,
-  activeItemClassName = '',
-  itemClassName = '',
+  activeItemClassName,
+  itemClassName,
 }) => {
   const [state, dispatch] = useImmerReducer<State, ReducerAction>(reducer, {
     activeKey: defaultActiveKey,
-    itemClassName,
-    activeItemClassName,
-    focusItemIndex: null,
     items: [],
   });
-
-  useEffect(() => {
-    if (activeKey) {
-      dispatch({
-        type: 'changeActiveKey',
-        key: activeKey,
-      });
-    }
-  }, [activeKey, dispatch]);
 
   const handleMenuChange = useLatest(onMenuChange);
 
   const contextValue = useMemo(
-    () => ({ state, dispatch, handleMenuChange }),
-    [state, dispatch, handleMenuChange],
+    () => ({
+      state: {
+        ...state,
+        activeKey: activeKey || state.activeKey,
+        itemClassName,
+        activeItemClassName,
+      },
+      dispatch,
+      handleMenuChange,
+    }),
+    [state, activeKey, itemClassName, activeItemClassName, dispatch, handleMenuChange],
   );
 
   return (

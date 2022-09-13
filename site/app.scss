@@ -51,7 +51,8 @@ body,
     align-items: center;
     height: 100%;
 
-    a {
+    &-item {
+      cursor: pointer;
       padding: 17px 30px;
       text-decoration: none;
       border-bottom: 2px solid transparent;

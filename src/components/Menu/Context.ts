@@ -3,6 +3,7 @@ import { createContext } from 'react';
 import type { MenuItem } from '@/components/Menu/MenuItem';
 import type { MenuGroup } from '@/components/Menu/MenuGroup';
 import type { VoidFunction } from '@powerfulyang/utils';
+import { isDefined } from '@powerfulyang/utils';
 
 export type MenuProps = {
   activeKey?: Key;
@@ -22,10 +23,10 @@ export type Item = {
 };
 
 export type State = {
-  focusItemIndex: number | null;
+  focusItemIndex?: number;
   activeKey?: Key;
-  itemClassName: string;
-  activeItemClassName: string;
+  itemClassName?: string;
+  activeItemClassName?: string;
   items: Item[];
 };
 
@@ -50,10 +51,7 @@ export const MenuContext = createContext<{
   handleMenuChange?: RefObject<MenuProps['onMenuChange']>;
 }>({
   state: {
-    focusItemIndex: null,
     items: [],
-    itemClassName: '',
-    activeItemClassName: '',
   },
   dispatch: () => {},
 });
@@ -61,9 +59,9 @@ export const MenuContext = createContext<{
 export const reducer = (draft: State, action: ReducerAction) => {
   switch (action.type) {
     case 'MoveFocus': {
-      if (action.to === 'Previous' && draft.focusItemIndex !== null) {
+      if (action.to === 'Previous' && isDefined(draft.focusItemIndex)) {
         draft.focusItemIndex = Math.max(0, draft.focusItemIndex - 1);
-      } else if (action.to === 'Next' && draft.focusItemIndex !== null) {
+      } else if (action.to === 'Next' && isDefined(draft.focusItemIndex)) {
         draft.focusItemIndex = Math.min(draft.items.length - 1, draft.focusItemIndex + 1);
       } else if (action.to === 'First') {
         draft.focusItemIndex = 0;

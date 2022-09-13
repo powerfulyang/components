@@ -17,7 +17,7 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
   ...props
 }) => {
   const { state, dispatch, handleMenuChange } = React.useContext(MenuContext);
-  const { activeItemClassName, itemClassName, activeKey, focusItemIndex, items } = state;
+  const { activeItemClassName, itemClassName = '', activeKey, focusItemIndex, items } = state;
   const ref = useRef<HTMLLIElement>(null);
 
   useEffect(() => {

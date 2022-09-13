@@ -49,14 +49,7 @@ export const Components: FC = () => {
         >
           <Menu.Group className="text-[color:var(--inactive-color)]" title="Components">
             {components.map((item) => (
-              <Menu.Item
-                menuKey={item}
-                key={item}
-                onClick={() => {
-                  navigate(`/components/${item.toLowerCase()}`);
-                }}
-                className="m-1"
-              >
+              <Menu.Item menuKey={item} key={item} className="m-1">
                 {item}
               </Menu.Item>
             ))}
