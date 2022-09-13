@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
@@ -20,7 +20,8 @@
     "declaration": false,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "noUncheckedIndexedAccess": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "site/**/*.ts", "site/**/*.tsx"]
 }

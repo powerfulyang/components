@@ -45,7 +45,7 @@ export const Components: FC = () => {
           activeKey={activeKey}
           className="p-6 text-white"
           activeItemClassName="!bg-[color:var(--active-menu-bg)]"
-          itemClassName="hover:bg-[color:var(--hover-menu-bg)] "
+          itemClassName="hover:bg-[color:var(--hover-menu-bg)] focus-visible:bg-[color:var(--focus-menu-bg)] focus-visible:outline-none"
         >
           <Menu.Group className="text-[color:var(--inactive-color)]" title="Components">
             {components.map((item) => (

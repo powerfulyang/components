@@ -2,8 +2,8 @@ import type { FC, PropsWithChildren } from 'react';
 import React, { forwardRef, useId } from 'react';
 import './index.scss';
 import classNames from 'classnames';
-import { Icon } from '@/components';
 import { useIsomorphicLayoutEffect } from '@powerfulyang/hooks';
+import { Icon } from '../Icon';
 
 export type CheckboxProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,

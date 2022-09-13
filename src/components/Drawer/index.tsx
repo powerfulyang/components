@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import React from 'react';
-import type { DialogProps } from '@/components';
-import { Dialog } from '@/components';
+import type { DialogProps } from '@/components/Dialog';
+import { Dialog } from '@/components/Dialog';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';

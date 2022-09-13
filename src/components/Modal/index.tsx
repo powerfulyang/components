@@ -1,9 +1,11 @@
-import type { DialogProps } from '@/components';
-import { Button, Dialog, Icon } from '@/components';
+import type { DialogProps } from '@/components/Dialog';
+import { Dialog } from '@/components/Dialog';
 import type { FC, PropsWithChildren } from 'react';
 import React from 'react';
 import './index.scss';
 import { useLatest } from '@powerfulyang/hooks';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 export type ModalProps = {
   title?: string;

@@ -3,6 +3,8 @@
 html,
 body,
 #root {
+  --body-font: 'Poppins', sans-serif;
+
   font-family: var(--body-font);
   font-size: 14px;
   @apply h-full w-full;
