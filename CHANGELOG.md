@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.6.0](https://github.com/powerfulyang/components/compare/v1.5.1...v1.6.0) (2022-09-14)
+
+
+### Features
+
+* @powerfulyang/lint@3.1.0 ([fdda527](https://github.com/powerfulyang/components/commit/fdda527fca3c0c241a406d5d905fdcc493b28131))
+* components -> checkbox ([8192fb7](https://github.com/powerfulyang/components/commit/8192fb7bc87684cf2f9f0d33c84a4e119816f0cb))
+* components -> drawer ([26cd5b5](https://github.com/powerfulyang/components/commit/26cd5b5c6b22a88c27f4ebb13b01ec6021bc5c5a))
+* components -> dropdown ([1b06880](https://github.com/powerfulyang/components/commit/1b06880463a6f99e1e976cea7080c72a61cc52ca))
+* components -> switch ([f808e97](https://github.com/powerfulyang/components/commit/f808e979351e1e71d18cebf8b1739fc850c8f3bf))
+* components -> tooltip, hooks -> useLatest ([80efc61](https://github.com/powerfulyang/components/commit/80efc619688deddda17f5e072333b2d0c5b691ac))
+* dialog and modal ([2fbefa6](https://github.com/powerfulyang/components/commit/2fbefa63ec027e1aab2c9af54c5a603d19d40808))
+* dropdown ([1d4f25e](https://github.com/powerfulyang/components/commit/1d4f25e7a76456d9cd472007da96bb45dc754af2))
+* inspire telegram-tt ([b71bd49](https://github.com/powerfulyang/components/commit/b71bd49cd9006fe7d1bea23acc0b2a491a98ae36))
+* radio ([01dc2bd](https://github.com/powerfulyang/components/commit/01dc2bd5805b097e9be57b9e1add3db8b4d58564))
+* tooltip ([491d10c](https://github.com/powerfulyang/components/commit/491d10c756fbdda915c1ee524c869a9d12fa317b))
+* 菜单修改 ([e1ef7d8](https://github.com/powerfulyang/components/commit/e1ef7d8970b152bf0aa75a910cae13117f93d5c5))
+
+
+### Bug Fixes
+
+* components -> menu, activeKey ([655b32b](https://github.com/powerfulyang/components/commit/655b32bcc80bfec5f9ba6ab4f01aff3fd6e91e1e))
+* components -> Menu:focus should listen press arrowUp/arrowDown/l/r event ([16f4a10](https://github.com/powerfulyang/components/commit/16f4a10714976980a0f537fd2f3fe3d0dfd2f413))
+* components -> switch ([8e24e9d](https://github.com/powerfulyang/components/commit/8e24e9d3df3cc59ce424c6e51401f211cfcdd557))
+
 ## [1.5.1](https://github.com/powerfulyang/components/compare/v1.5.0...v1.5.1) (2022-08-12)
 
 
