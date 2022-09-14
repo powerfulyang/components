@@ -2,6 +2,7 @@ import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
 import React, { useEffect, useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from '@/components/Menu/Context';
+import { DropdownContext } from '@/components/Dropdown/Context';
 
 export type MenuItemProps = {
   menuKey: string | number;
@@ -17,6 +18,7 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
   ...props
 }) => {
   const { state, dispatch, handleMenuChange } = React.useContext(MenuContext);
+  const { toggle } = React.useContext(DropdownContext);
   const { activeItemClassName, itemClassName = '', activeKey, focusItemIndex, items } = state;
   const ref = useRef<HTMLLIElement>(null);
 
@@ -51,8 +53,9 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
       });
       onClick?.(e);
       handleMenuChange?.current?.(menuKey);
+      toggle?.(false);
     },
-    [dispatch, handleMenuChange, menuKey, onClick],
+    [dispatch, handleMenuChange, menuKey, onClick, toggle],
   );
 
   const handleKeyDown = React.useCallback(
@@ -63,6 +66,7 @@ export const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
           key: menuKey,
         });
         handleMenuChange?.current?.(menuKey);
+        toggle?.(false);
       }
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
         dispatch({
