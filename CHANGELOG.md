@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/powerfulyang/components/compare/v1.6.0...v1.6.1) (2022-12-20)
+
+
+### Bug Fixes
+
+* swc didn't compile optional chaining usage in node_modules ([2a9dfc1](https://github.com/powerfulyang/components/commit/2a9dfc147c7e7c4ff89a6e8431cb8effe8a07105))
+
 ## [1.6.0](https://github.com/powerfulyang/components/compare/v1.5.1...v1.6.0) (2022-09-14)
 
 
