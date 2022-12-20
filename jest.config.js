@@ -19,6 +19,5 @@ module.exports = {
     '^.+\\.(ts|tsx)$': '@swc/jest',
     '.js$': '@swc/jest',
   },
-  transformIgnorePatterns: [`/node_modules/.pnpm/(?!lodash-es)`],
   testEnvironment: 'jsdom',
 };

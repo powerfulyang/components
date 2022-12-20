@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useImmer } from '@powerfulyang/hooks';
 import './index.scss';
-import { debounce } from 'lodash-es';
+import { debounce } from '@powerfulyang/utils';
 
 interface Ripple {
   x: number;

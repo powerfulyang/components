@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "target": "ES2018"
+  },
+  "exclude": ["node_modules", "./src/**/*.spec.ts", "./src/**/*.spec.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

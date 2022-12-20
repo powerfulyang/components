@@ -3,7 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
-import { capitalize } from 'lodash-es';
+import { capitalize } from '@powerfulyang/utils';
 import { ButtonComponents } from '../Button';
 import { DialogComponents } from '../Dialog';
 import { DropdownComponents } from '../Dropdown';

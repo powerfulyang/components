@@ -35,7 +35,9 @@ export default {
       extract: 'index.css',
     }),
     url(),
-    typescript(),
+    typescript({
+      tsconfig: 'tsconfig.build.json',
+    }),
   ],
   external: [...pkgDeps, 'react-dom/client'],
 };
