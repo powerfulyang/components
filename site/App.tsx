@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './app.scss';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Tab, Tabs } from '@/components/Tabs';
 import { Components } from './pages/Components';
+import { Charts } from './charts';
 
 const App = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const activeTabKey = useMemo(() => {
+    return location.pathname.split('/')[1];
+  }, [location.pathname]);
   return (
     <div className="app">
       <div className="main">
@@ -15,12 +20,12 @@ const App = () => {
             tabClassName="hover:text-white text-[color:var(--inactive-color)] focus-visible:text-white focus-visible:outline-none"
             className="header-menu"
             activeClassName="!text-white"
-            defaultActiveTabKey="Components"
+            activeTabKey={activeTabKey}
             onTabChange={(key) => {
               navigate(`/${key}`);
             }}
           >
-            <Tab tabKey="Components" className="header-menu-item">
+            <Tab tabKey="components" className="header-menu-item">
               Components
             </Tab>
             <Tab tabKey="2" className="notify header-menu-item">
@@ -29,8 +34,8 @@ const App = () => {
             <Tab tabKey="3" className="header-menu-item">
               Discover
             </Tab>
-            <Tab tabKey="4" className="notify header-menu-item">
-              Market
+            <Tab tabKey="charts" className="notify header-menu-item">
+              Charts
             </Tab>
           </Tabs>
           <div className="search-bar">
@@ -41,8 +46,9 @@ const App = () => {
           </div>
         </div>
         <Routes>
-          <Route index element={<Components />} />
+          <Route index element={<Navigate replace to="/components" />} />
           <Route path="/components/*" element={<Components />} />
+          <Route path="/charts/*" element={<Charts />} />
         </Routes>
       </div>
     </div>

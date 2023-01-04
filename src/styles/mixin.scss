@@ -1,0 +1,8 @@
+@mixin ellipsis($line-height: 1.5) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+  word-wrap: normal;
+  line-height: $line-height;
+}

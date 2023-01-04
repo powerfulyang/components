@@ -5,6 +5,8 @@ const moduleNameMapper = pathsToModuleNameMapper(tsconfig.compilerOptions.paths,
   prefix: '<rootDir>/',
 });
 
+const esModules = ['d3', 'internmap', 'delaunator', 'robust-predicates'].join('|');
+
 /** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
   moduleNameMapper: {
@@ -20,4 +22,5 @@ module.exports = {
     '.js$': '@swc/jest',
   },
   testEnvironment: 'jsdom',
+  transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],
 };

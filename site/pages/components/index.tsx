@@ -4,13 +4,13 @@ import { Skeleton } from '@/components';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { capitalize } from '@powerfulyang/utils';
-import { ButtonComponents } from '../Button';
-import { DialogComponents } from '../Dialog';
-import { DropdownComponents } from '../Dropdown';
-import { CheckboxComponents } from '../Checkbox';
-import { RadioComponents } from '../Radio';
-import { SwitchComponents } from '../Switch';
-import { TooltipComponents } from '../Tooltip';
+import { ButtonComponents } from '../../components/Button';
+import { DialogComponents } from '../../components/Dialog';
+import { DropdownComponents } from '../../components/Dropdown';
+import { CheckboxComponents } from '../../components/Checkbox';
+import { RadioComponents } from '../../components/Radio';
+import { SwitchComponents } from '../../components/Switch';
+import { TooltipComponents } from '../../components/Tooltip';
 
 const components = [
   'Button',

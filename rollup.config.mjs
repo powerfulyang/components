@@ -2,10 +2,7 @@ import postcss from 'rollup-plugin-postcss';
 import url from '@rollup/plugin-url';
 import { isProdProcess } from '@powerfulyang/utils';
 import typescript from '@rollup/plugin-typescript';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const pkg = require('./package.json');
+import pkg from './package.json' assert { type: 'json' };
 
 const pkgDeps = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies });
 
@@ -33,6 +30,11 @@ export default {
     postcss({
       minimize: isProdProcess,
       extract: 'index.css',
+      use: {
+        sass: {
+          includePaths: ['./src/styles'],
+        },
+      },
     }),
     url(),
     typescript({

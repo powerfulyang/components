@@ -55,11 +55,13 @@
     "@powerfulyang/utils": "*",
     "classnames": "*",
     "framer-motion": "*",
-    "lodash-es": "*",
     "react": "*",
     "react-dom": "*",
     "reflect-metadata": "*",
     "rxjs": "*"
+  },
+  "optionalDependencies": {
+    "d3": "*"
   },
   "devDependencies": {
     "@powerfulyang/lint": "latest",
@@ -67,6 +69,7 @@
     "@rollup/plugin-url": "8.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
+    "@types/d3": "7.4.0",
     "@vitejs/plugin-react": "3.0.0",
     "react-router-dom": "6.6.1",
     "rollup-plugin-postcss": "4.0.2",

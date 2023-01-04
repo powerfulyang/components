@@ -18,7 +18,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, title, onOk
     <Dialog {...props} className="pt-32" mode="modal">
       <div className="py-modal-container px-8 py-6">
         <div className="mb-4 flex items-center justify-between">
-          <div className="text-xl">{title}</div>
+          <div className="py-modal-title text-xl">{title}</div>
           <Icon className="cursor-pointer text-2xl" type="icon-close" onClick={props.onClose} />
         </div>
         {children}

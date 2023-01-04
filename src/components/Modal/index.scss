@@ -1,3 +1,9 @@
+@import 'mixin';
+
 .py-modal-container {
   @apply m-auto w-[500px] rounded-lg bg-white shadow-lg;
+
+  .py-modal-title {
+    @include ellipsis(1);
+  }
 }

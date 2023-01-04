@@ -12,3 +12,4 @@ export * from './Radio';
 export * from './Switch';
 export * from './Tabs';
 export * from './Tooltip';
+export * from './Charts';
