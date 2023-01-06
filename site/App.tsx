@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import './app.scss';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Tab, Tabs } from '@/components/Tabs';
-import { Components } from './pages/Components';
+import { Components } from './pages/components';
 import { Charts } from './charts';
 
 const App = () => {

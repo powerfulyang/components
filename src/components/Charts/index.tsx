@@ -1,7 +1,9 @@
 import type { FC, PropsWithChildren } from 'react';
-import React, { useId } from 'react';
+import React, { useId, useMemo } from 'react';
+import { atomWithImmer } from 'jotai-immer';
+import { ChartContext } from '@/components/Charts/ChartContext';
 
-export * from './shape';
+export * from './cartesian';
 
 type ChartProps<T> = {
   width: number;
@@ -13,6 +15,12 @@ type ChartProps<T> = {
     height: number;
   };
   data: T[];
+  padding?: {
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
+  };
 };
 
 type ClipPathProps = {
@@ -32,33 +40,60 @@ const ClipPath: FC<ClipPathProps> = ({ id, x, y, width, height }) => {
   );
 };
 
-export const ChartContext = React.createContext<{
-  data: any[];
-  width: number;
-  height: number;
-  xAxisHeight: number;
-  yAxisWidth: number;
-}>({ data: [], width: 0, height: 0, xAxisHeight: 0, yAxisWidth: 0 });
-
 export const Chart = <T extends unknown>({
   width,
   height,
   viewBox,
   data,
   children,
+  padding,
 }: PropsWithChildren<ChartProps<T>>) => {
   const svgView = viewBox || { width, height, x: 0, y: 0 };
   const id = useId();
   const clipPathId = `clip-path-${id}`;
-  const ctx = React.useMemo(() => {
+  const atomInstance = useMemo(() => {
+    return atomWithImmer({
+      xAxis: {
+        size: 0,
+        dataKey: '',
+      },
+      yAxis: {
+        size: 0,
+        dataKeys: [],
+      },
+    });
+  }, []);
+  const ctx = useMemo(() => {
     return {
-      data: data || [],
+      atomInstance,
       width,
       height,
-      xAxisHeight: 20,
-      yAxisWidth: 40,
+      padding: {
+        top: padding?.top || 0,
+        right: padding?.right || 0,
+        bottom: padding?.bottom || 0,
+        left: padding?.left || 0,
+      },
+      data,
     };
-  }, [data, height, width]);
+  }, [atomInstance, data, height, padding, width]);
+  const clipPath = useMemo(() => {
+    return {
+      id: clipPathId,
+      x: ctx.padding.left,
+      y: ctx.padding.top,
+      width: ctx.width - ctx.padding.left - ctx.padding.right,
+      height: ctx.height - ctx.padding.top - ctx.padding.bottom,
+    };
+  }, [
+    clipPathId,
+    ctx.height,
+    ctx.padding.bottom,
+    ctx.padding.left,
+    ctx.padding.right,
+    ctx.padding.top,
+    ctx.width,
+  ]);
   return (
     <ChartContext.Provider value={ctx}>
       <svg
@@ -67,13 +102,7 @@ export const Chart = <T extends unknown>({
         height={height}
         viewBox={`${svgView.x} ${svgView.y} ${svgView.width} ${svgView.height}`}
       >
-        <ClipPath
-          id={clipPathId}
-          x={svgView.x}
-          y={svgView.y}
-          width={svgView.width}
-          height={svgView.height}
-        />
+        <ClipPath {...clipPath} />
         {children}
       </svg>
     </ChartContext.Provider>

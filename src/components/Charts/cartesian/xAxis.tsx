@@ -1,7 +1,9 @@
 import type { FC } from 'react';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import * as d3 from 'd3';
-import { ChartContext } from '..';
+import { useAtom } from 'jotai';
+import { ChartContext } from '@/components/Charts/ChartContext';
+import { useIsomorphicLayoutEffect } from '@powerfulyang/hooks';
 
 type XAxisProps = {
   dataKey: string;
@@ -9,18 +11,41 @@ type XAxisProps = {
 
 export const XAxis: FC<XAxisProps> = ({ dataKey }) => {
   const ref = useRef<SVGGElement>(null);
-  const { data, width, height, xAxisHeight, yAxisWidth } = useContext(ChartContext);
-  const xH = xAxisHeight;
-  useEffect(() => {
+  const { atomInstance, width, height, padding, data } = useContext(ChartContext);
+  const [chartState, setChartState] = useAtom(atomInstance);
+  const yAxisWidth = chartState.yAxis.size;
+  useIsomorphicLayoutEffect(() => {
     if (ref.current) {
+      const range = [0, width - padding.right - padding.left - yAxisWidth];
       const g = d3.select(ref.current);
       const xScale = d3
-        .scaleBand()
+        .scalePoint()
         .domain(data.map((d) => d[dataKey]))
-        .range([yAxisWidth, width]);
+        .range(range);
       g.call(d3.axisBottom(xScale));
-      g.attr('transform', `translate(0, ${height - xH})`);
+      const xAxisHeight = g.node()?.getBBox().height || 0;
+      setChartState((draft) => {
+        draft.xAxis.size = xAxisHeight;
+        draft.xAxis.scale = xScale;
+        draft.xAxis.dataKey = dataKey;
+      });
+      if (yAxisWidth) {
+        g.attr(
+          'transform',
+          `translate(${padding.left + yAxisWidth}, ${height - padding.bottom - xAxisHeight})`,
+        );
+      }
     }
-  }, [data, dataKey, height, width, xH, yAxisWidth]);
+  }, [
+    data,
+    dataKey,
+    height,
+    padding.bottom,
+    padding.left,
+    padding.right,
+    setChartState,
+    width,
+    yAxisWidth,
+  ]);
   return <g ref={ref} />;
 };

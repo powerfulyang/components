@@ -13,3 +13,4 @@ export * from './Switch';
 export * from './Tabs';
 export * from './Tooltip';
 export * from './Charts';
+export { ChartContext } from '@/components/Charts/ChartContext';
