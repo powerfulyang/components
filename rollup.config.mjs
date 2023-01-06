@@ -4,7 +4,7 @@ import { isProdProcess } from '@powerfulyang/utils';
 import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json' assert { type: 'json' };
 
-const pkgDeps = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies });
+const pkgDeps = Object.keys({ ...pkg.optionalDependencies, ...pkg.peerDependencies });
 
 export default {
   input: 'src/index.tsx',

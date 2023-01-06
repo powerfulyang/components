@@ -1,6 +1,5 @@
-import { Menu } from '@/components/Menu';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { Skeleton } from '@/components';
+import { Skeleton, Menu } from '@/components';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { capitalize } from '@powerfulyang/utils';

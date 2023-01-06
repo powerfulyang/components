@@ -1,6 +1,5 @@
-import { Tooltip } from '@/components/Tooltip';
 import React from 'react';
-import { Button } from '@/components';
+import { Button, Tooltip } from '@/components';
 
 export const TooltipComponents = () => {
   return (

@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { lazy, Suspense, useMemo } from 'react';
 import './app.scss';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { Tab, Tabs } from '@/components/Tabs';
-import { Components } from './pages/Components';
-import { Charts } from './charts';
+import { Tab, Tabs } from '@/components';
+import { Components } from './pages/components';
+
+const Charts = lazy(() => import('./pages/charts'));
 
 const App = () => {
   const navigate = useNavigate();
@@ -45,11 +46,13 @@ const App = () => {
             <img className="profile-img" src="/favicon.ico" alt="" />
           </div>
         </div>
-        <Routes>
-          <Route index element={<Navigate replace to="/components" />} />
-          <Route path="/components/*" element={<Components />} />
-          <Route path="/charts/*" element={<Charts />} />
-        </Routes>
+        <Suspense fallback="Loading...">
+          <Routes>
+            <Route index element={<Navigate replace to="/components" />} />
+            <Route path="/components/*" element={<Components />} />
+            <Route path="/charts/*" element={<Charts />} />
+          </Routes>
+        </Suspense>
       </div>
     </div>
   );

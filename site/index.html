@@ -12,5 +12,14 @@
     <div id="root"></div>
     <script src="./main.tsx" type="module"></script>
     <script src="//at.alicdn.com/t/c/font_178634_m6cwt8bb21e.js"></script>
+    <script>
+      (function () {
+        let redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </body>
 </html>

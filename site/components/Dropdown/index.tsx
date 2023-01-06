@@ -1,8 +1,6 @@
-import { Dropdown } from '@/components/Dropdown';
 import type { FC } from 'react';
 import React from 'react';
-import { Button } from '@/components';
-import { Menu } from '@/components/Menu';
+import { Button, Dropdown, Menu } from '@/components';
 
 const Overlay: FC = () => {
   return (

@@ -1,7 +1,5 @@
-import { Button, notification } from '@/components';
+import { Button, notification, Modal, Drawer } from '@/components';
 import React from 'react';
-import { Modal } from '@/components/Modal';
-import { Drawer } from '@/components/Drawer';
 
 export const DialogComponents = () => {
   const [modalVisible, setModalVisible] = React.useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio } from '@/components/Radio';
+import { Radio } from '@/components';
 
 export const RadioComponents = () => {
   return (

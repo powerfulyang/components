@@ -1,5 +1,4 @@
-import type { FC, PropsWithChildren, ReactNode } from 'react';
-import React, { useId, useMemo, useRef, useState } from 'react';
+import React, { FC, PropsWithChildren, ReactNode, useId, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useOutsideClick } from '@powerfulyang/hooks';
 import './index.scss';
