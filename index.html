@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="initial-scale=1.0, width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      name="viewport"
+    />
+    <title>Components Preview Site</title>
+    <script type="module" crossorigin src="/assets/index-e8506864.js"></script>
+    <link rel="stylesheet" href="/assets/index-39207888.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script src="//at.alicdn.com/t/c/font_178634_m6cwt8bb21e.js"></script>
+    <script>
+      (function () {
+        let redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+  </body>
+</html>
