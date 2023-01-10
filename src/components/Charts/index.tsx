@@ -4,6 +4,7 @@ import { atomWithImmer } from 'jotai-immer';
 import { ChartContext } from '@/components/Charts/ChartContext';
 
 export * from './cartesian';
+export * from './github-profile';
 export { ChartContext };
 
 type ChartProps<T> = {

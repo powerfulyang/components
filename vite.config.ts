@@ -22,4 +22,15 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://api.powerfulyang.com',
+        changeOrigin: true,
+      },
+    },
+  },
+  define: {
+    'process.env.SITE': JSON.stringify(process.env.SITE),
+  },
 });

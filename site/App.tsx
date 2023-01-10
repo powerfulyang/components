@@ -3,6 +3,7 @@ import './app.scss';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Tab, Tabs } from '@/components';
 import { Components } from './pages/components';
+import { Github } from './pages/github-profile';
 
 const Charts = lazy(() => import('./pages/charts'));
 
@@ -32,8 +33,8 @@ const App = () => {
             <Tab tabKey="2" className="notify header-menu-item">
               Your work
             </Tab>
-            <Tab tabKey="3" className="header-menu-item">
-              Discover
+            <Tab tabKey="github" className="header-menu-item">
+              Github Profile
             </Tab>
             <Tab tabKey="charts" className="notify header-menu-item">
               Charts
@@ -51,6 +52,7 @@ const App = () => {
             <Route index element={<Navigate replace to="/components" />} />
             <Route path="/components/*" element={<Components />} />
             <Route path="/charts/*" element={<Charts />} />
+            <Route path="/github/*" element={<Github />} />
           </Routes>
         </Suspense>
       </div>

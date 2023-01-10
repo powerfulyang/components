@@ -2,14 +2,16 @@ import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import React from 'react';
 import './index.scss';
+import classNames from 'classnames';
 
 type SkeletonProps = {
   rows?: number;
+  className?: string;
 };
 
-export const Skeleton: FC<SkeletonProps> = ({ rows = 4 }) => {
+export const Skeleton: FC<SkeletonProps> = ({ rows = 4, className }) => {
   return (
-    <div className="py-skeleton">
+    <div className={classNames('py-skeleton', className)}>
       {Object.keys(Array.from({ length: rows })).map((_) => (
         <motion.div
           animate={{
