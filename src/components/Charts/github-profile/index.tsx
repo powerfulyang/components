@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import * as d3 from 'd3';
 import type { UserInfo } from '@/types/GithubUserInfo';
 
@@ -11,12 +11,8 @@ const width = 1280;
 const height = 850;
 
 export const GithubProfile: FC<Props> = ({ userInfo, ...props }) => {
-  const ref = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    if (!userInfo) return () => {};
-    const svg = d3.select(ref.current);
-    const group = svg.append('g');
+  const Profile = useMemo(() => {
+    if (!userInfo) return null;
 
     const dx = width / 64;
     const dy = dx * Math.tan((30 * Math.PI) / 180);
@@ -43,12 +39,7 @@ export const GithubProfile: FC<Props> = ({ userInfo, ...props }) => {
       }
     };
 
-    const addColor = (
-      el: d3.Selection<SVGRectElement, unknown, null, unknown>,
-      week: number,
-      contributionLevel: string,
-      darker: number,
-    ) => {
+    const addColor = (week: number, contributionLevel: string, darker: number) => {
       const offsetHue = week * -7;
       const lightness = ['20%', '30%', '35%', '40%', '50%'][getNumberOfLevel(contributionLevel)]!;
       const values = new Array(7)
@@ -63,14 +54,10 @@ export const GithubProfile: FC<Props> = ({ userInfo, ...props }) => {
           return d3.rgb(v).darker(darker);
         })
         .join(';');
-      el.append('animate')
-        .attr('attributeName', 'fill')
-        .attr('values', values)
-        .attr('dur', '10s')
-        .attr('repeatCount', 'indefinite');
+      return <animate attributeName="fill" values={values} dur="10s" repeatCount="indefinite" />;
     };
 
-    userInfo.contributionCalendar.forEach((d, i) => {
+    return userInfo.contributionCalendar.map((d, i) => {
       const date = new Date(d.date);
       const dayOfWeek = date.getUTCDay(); // 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
       const week = Math.floor(i / 7);
@@ -78,88 +65,92 @@ export const GithubProfile: FC<Props> = ({ userInfo, ...props }) => {
       const baseY = offsetY + (week + dayOfWeek) * dy;
       const calHeight = Math.log10(d.contributionCount / 20 + 1) * 144 + 3;
       const { contributionLevel } = d;
-      // 64 weeks
-      const bar = group.append('g').attr('transform', `translate(${baseX}, ${baseY - calHeight})`);
-      // animation
-      if (d.contributionLevel !== 'NONE') {
-        bar
-          .append('animateTransform')
-          .attr('attributeName', 'transform')
-          .attr('type', 'translate')
-          .attr('from', `${baseX} ${baseY - 3}`)
-          .attr('to', `${baseX} ${baseY - calHeight}`)
-          .attr('dur', '3s')
-          .attr('repeatCount', '1');
-      }
       //
       const withTop = dxx;
-      const topPanel = bar
-        .append('rect')
-        .attr('stroke', 'none')
-        .attr('width', withTop)
-        .attr('height', withTop)
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr(
-          'transform',
-          `skewY(-30) skewX(${Math.atan(dxx / 2 / dyy) * (180 / Math.PI)}) scale(${dxx / withTop} ${
-            (2 * dyy) / withTop
-          })`,
-        );
-      addColor(topPanel, week, contributionLevel, 0);
+      const TopPanel = (
+        <rect
+          stroke="none"
+          width={withTop}
+          height={withTop}
+          x={0}
+          y={0}
+          transform={`skewY(-30) skewX(${Math.atan(dxx / 2 / dyy) * (180 / Math.PI)}) scale(${
+            dxx / withTop
+          } ${(2 * dyy) / withTop})`}
+        >
+          {addColor(week, contributionLevel, 0)}
+        </rect>
+      );
       // left panel
       const leftWidth = dxx;
       const scaleLeft = Math.sqrt(dxx ** 2 + dyy ** 2) / leftWidth;
       const leftHeight = calHeight / scaleLeft;
-      const leftPanel = bar
-        .append('rect')
-        .attr('stroke', 'none')
-        .attr('width', leftWidth)
-        .attr('height', leftHeight)
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('transform', `skewY(30) scale(${dxx / leftWidth}, ${scaleLeft})`);
-      addColor(leftPanel, week, contributionLevel, 0.5);
-      // left panel animation
-      if (d.contributionLevel !== 'NONE') {
-        leftPanel
-          .append('animate')
-          .attr('attributeName', 'height')
-          .attr('from', 3 / scaleLeft)
-          .attr('to', leftHeight)
-          .attr('dur', '3s')
-          .attr('repeatCount', '1');
-      }
+      const LeftPanel = (
+        <rect
+          stroke="none"
+          width={leftWidth}
+          height={leftHeight}
+          x={0}
+          y={0}
+          transform={`skewY(30) scale(${dxx / leftWidth}, ${scaleLeft})`}
+        >
+          {addColor(week, contributionLevel, 0.5)}
+          {d.contributionLevel !== 'NONE' && (
+            <animate
+              attributeName="height"
+              from={3 / scaleLeft}
+              to={leftHeight}
+              dur="3s"
+              repeatCount={1}
+            />
+          )}
+        </rect>
+      );
       // right panel
       const rightWidth = dxx;
       const scaleRight = Math.sqrt(dxx ** 2 + dyy ** 2) / rightWidth;
       const rightHeight = calHeight / scaleRight;
-      const rightPanel = bar
-        .append('rect')
-        .attr('stroke', 'none')
-        .attr('width', rightWidth)
-        .attr('height', rightHeight)
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr(
-          'transform',
-          `translate(${dxx},${dyy}) skewY(-30) scale(${dxx / rightWidth}, ${scaleRight})`,
-        );
-      addColor(rightPanel, week, contributionLevel, 1);
-      // right panel animation
-      if (d.contributionLevel !== 'NONE') {
-        rightPanel
-          .append('animate')
-          .attr('attributeName', 'height')
-          .attr('from', 3 / scaleRight)
-          .attr('to', rightHeight)
-          .attr('dur', '3s')
-          .attr('repeatCount', '1');
-      }
+      const RightPanel = (
+        <rect
+          stroke="none"
+          width={rightWidth}
+          height={rightHeight}
+          x={0}
+          y={0}
+          transform={`translate(${dxx},${dyy}) skewY(-30) scale(${
+            dxx / rightWidth
+          }, ${scaleRight})`}
+        >
+          {addColor(week, contributionLevel, 1)}
+          {d.contributionLevel !== 'NONE' && (
+            <animate
+              attributeName="height"
+              from={3 / scaleRight}
+              to={rightHeight}
+              dur="3s"
+              repeatCount={1}
+            />
+          )}
+        </rect>
+      );
+      return (
+        <g key={d.date} transform={`translate(${baseX}, ${baseY - calHeight})`}>
+          {d.contributionLevel !== 'NONE' && (
+            <animateTransform
+              attributeName="transform"
+              type="translate"
+              from={`${baseX} ${baseY - 3}`}
+              to={`${baseX} ${baseY - calHeight}`}
+              dur="3s"
+              repeatCount="1"
+            />
+          )}
+          {TopPanel}
+          {LeftPanel}
+          {RightPanel}
+        </g>
+      );
     });
-    return () => {
-      group.remove();
-    };
   }, [userInfo]);
 
   return (
@@ -169,7 +160,8 @@ export const GithubProfile: FC<Props> = ({ userInfo, ...props }) => {
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       xmlns="http://www.w3.org/2000/svg"
-      ref={ref}
-    />
+    >
+      {Profile}
+    </svg>
   );
 };
