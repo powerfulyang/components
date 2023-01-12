@@ -1,7 +1,6 @@
 import { GithubProfile, Skeleton } from '@/components';
 import { useQuery } from '@tanstack/react-query';
 import type { UserInfo } from '@/types/GithubUserInfo';
-import React from 'react';
 import { prefix } from '../../constants/prefix';
 
 export const Github = () => {

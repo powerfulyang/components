@@ -1,5 +1,4 @@
 import { Area, Chart } from '@/components';
-import React from 'react';
 import { XAxis } from '@/components/Charts/cartesian';
 import { YAxis } from '@/components/Charts/cartesian/yAxis';
 import { Grid } from '@/components/Charts/cartesian/Grid';

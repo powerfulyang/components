@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import React, { useId, useMemo } from 'react';
+import { useId, useMemo } from 'react';
 import { atomWithImmer } from 'jotai-immer';
 import { ChartContext } from '@/components/Charts/ChartContext';
 

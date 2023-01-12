@@ -12,6 +12,7 @@ module.exports = {
           devDependencies: ['vite.config.ts', 'site/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'],
         },
       ],
+      'react/no-unknown-property': ['error', { ignore: ['css'] }],
     },
   })),
 };

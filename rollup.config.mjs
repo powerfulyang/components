@@ -1,6 +1,4 @@
-import postcss from 'rollup-plugin-postcss';
 import url from '@rollup/plugin-url';
-import { isProdProcess } from '@powerfulyang/utils';
 import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json' assert { type: 'json' };
 
@@ -27,19 +25,10 @@ export default {
     },
   ],
   plugins: [
-    postcss({
-      minimize: isProdProcess,
-      extract: 'index.css',
-      use: {
-        sass: {
-          includePaths: ['./src/styles'],
-        },
-      },
-    }),
     url(),
     typescript({
       tsconfig: 'tsconfig.build.json',
     }),
   ],
-  external: [...pkgDeps, 'react-dom/client'],
+  external: [...pkgDeps, 'react-dom/client', '@emotion/react/jsx-runtime'],
 };

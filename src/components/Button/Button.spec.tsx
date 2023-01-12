@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { Button } from '@/components';
-import React from 'react';
 
 describe('Button', () => {
   it('should invoke onClick', () => {

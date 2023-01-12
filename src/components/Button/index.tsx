@@ -1,41 +1,47 @@
-/* eslint-disable react/button-has-type */
 import type { MouseEvent, ReactElement } from 'react';
 import React, { cloneElement, forwardRef, useCallback } from 'react';
-import classNames from 'classnames';
-import './index.scss';
 import RippleEffect from '@/components/RippleEffect';
 import { Icon } from '@/components/Icon';
+import { ClassNames, css, keyframes } from '@emotion/react';
+import classNames from 'classnames';
+import { useTheme } from '@/context/theme';
 
-export type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   ripple?: boolean;
-  shouldStopPropagation?: boolean;
-  appearance?: 'primary' | 'secondary' | 'danger' | 'default' | 'ghost';
+  appearance?: 'primary' | 'secondary' | 'error' | 'default';
+  ghost?: boolean;
   rounded?: boolean;
   icon?: ReactElement;
   loading?: boolean;
 };
 
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      type = 'button',
       className,
       onClick,
-      shouldStopPropagation,
       ripple = true,
-      disabled,
       appearance = 'default',
       rounded = false,
       icon,
       loading = false,
+      ghost = false,
       ...props
     },
     ref,
   ) => {
+    const { disabled = loading } = props;
     const canClick = !disabled && !loading;
 
     const handleClick = useCallback(
@@ -43,53 +49,87 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         if (canClick && onClick) {
           onClick(e);
         }
-        if (shouldStopPropagation) e.stopPropagation();
       },
-      [canClick, onClick, shouldStopPropagation],
+      [canClick, onClick],
     );
+
+    const theme = useTheme();
+
     return (
       <button
+        type="button"
         {...props}
         ref={ref}
-        type={type}
-        className={classNames(
-          className,
-          'relative overflow-hidden py-1.5',
-          'text-base text-base text-white',
-          {
-            'cursor-not-allowed bg-gray-400 opacity-50': disabled,
-          },
-          {
-            'bg-purple-500': appearance === 'primary',
-          },
-          {
-            'bg-gray-500': appearance === 'secondary',
-          },
-          {
-            'bg-red-500': appearance === 'danger',
-          },
-          {
-            'border-[1px] border-solid border-purple-500': appearance === 'ghost',
-          },
-          {
-            'rounded-full px-4': rounded,
-            'rounded px-3': !rounded,
-          },
-          {
-            'cursor-default': loading,
-          },
-          'inline-flex items-center justify-center',
-        )}
+        css={[
+          css({
+            display: 'inline-flex',
+            justifySelf: 'center',
+            alignItems: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+            padding: '.65rem 1rem',
+            color: 'white',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            border: 'none',
+            borderRadius: rounded ? '9999px' : '0.5rem',
+            backgroundColor: theme.colors.transparent,
+          }),
+          css`
+            &:disabled,
+            &[data-loading='true'] {
+              cursor: not-allowed;
+              opacity: 0.5;
+              background-color: ${theme.colors.disabled};
+            }
+            &:not(:disabled) {
+              background-color: ${theme.colors[appearance]};
+            }
+            &:not(:disabled):not([data-loading='true']):hover {
+              filter: brightness(1.1);
+            }
+          `,
+          ghost &&
+            css`
+              &:not(:disabled) {
+                border: 1px solid ${theme.colors[appearance]};
+                background-color: ${theme.colors.transparent};
+              }
+            `,
+        ]}
+        className={className}
         onClick={handleClick}
+        data-loading={loading}
       >
-        {icon &&
-          !loading &&
-          cloneElement(icon, {
-            className: classNames('mr-1.5', icon.props.className),
-          })}
-        {loading && (
-          <Icon type="icon-loading" className={classNames('mr-1.5 animate-spin text-lg')} />
-        )}
+        <ClassNames>
+          {({ css: CSS }) => {
+            return (
+              <>
+                {loading && (
+                  <Icon
+                    type="icon-loading"
+                    css={CSS`
+                      margin-right: 0.6rem;
+                      transform-origin: center;
+                      animation: ${spin} 1s linear infinite;
+                    `}
+                  />
+                )}
+                {!loading &&
+                  icon &&
+                  cloneElement(icon, {
+                    ...icon.props,
+                    className: classNames(
+                      CSS`
+                      margin-right: 0.6rem;
+
+                    `,
+                      icon.props.className,
+                    ),
+                  })}
+              </>
+            );
+          }}
+        </ClassNames>
         {children}
         {ripple && canClick && <RippleEffect />}
       </button>

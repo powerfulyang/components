@@ -15,13 +15,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        includePaths: [path.resolve(__dirname, 'src/styles')],
-      },
-    },
-  },
   server: {
     proxy: {
       '/api': {

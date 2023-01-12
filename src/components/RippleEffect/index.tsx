@@ -2,8 +2,9 @@ import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useImmer } from '@powerfulyang/hooks';
-import './index.scss';
 import { debounce } from '@powerfulyang/utils';
+import { css, keyframes } from '@emotion/react';
+import { useTheme } from '@/context/theme';
 
 interface Ripple {
   x: number;
@@ -14,8 +15,25 @@ interface Ripple {
 
 const ANIMATION_DURATION_MS = 700;
 
+const ripple = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+`;
+
 const RippleEffect: FC = () => {
   const [ripples, setRipples] = useImmer<Ripple[]>([]);
+  const theme = useTheme();
 
   const cleanUpDebounced = useMemo(() => {
     return debounce(() => {
@@ -51,7 +69,22 @@ const RippleEffect: FC = () => {
   );
 
   return (
-    <div role="none" className="ripple-container" onMouseDown={handleMouseDown}>
+    <div
+      role="none"
+      css={css`
+        position: absolute;
+        inset: 0;
+        & > span {
+          position: absolute;
+          display: block;
+          background-color: ${theme.colors.rippleColor};
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ${ripple} 700ms;
+        }
+      `}
+      onMouseDown={handleMouseDown}
+    >
       {ripples.map(({ x, y, size, key }) => (
         <motion.span key={key} style={{ width: size, height: size, left: x, top: y }} />
       ))}

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import * as d3 from 'd3';
 import { useAtom } from 'jotai';
 import { ChartContext } from '@/components/Charts/ChartContext';
