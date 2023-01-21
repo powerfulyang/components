@@ -6,7 +6,7 @@ specifiers:
   '@powerfulyang/utils': '*'
   '@rollup/plugin-typescript': 11.0.0
   '@rollup/plugin-url': 8.0.1
-  '@tanstack/react-query': 4.22.0
+  '@tanstack/react-query': 4.22.3
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0
   '@types/d3': 7.4.0
@@ -47,7 +47,7 @@ devDependencies:
   '@powerfulyang/lint': 3.1.3_z6wznmtyb6ovnulj6iujpct7um
   '@rollup/plugin-typescript': 11.0.0_typescript@4.9.4
   '@rollup/plugin-url': 8.0.1
-  '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query': 4.22.3_biqbaboplfbrettd7655fr4n2y
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/d3': 7.4.0
@@ -1272,7 +1272,7 @@ packages:
       prettier: 2.8.3
       prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.3
       rimraf: 4.1.1
-      rollup: 3.10.0
+      rollup: 3.10.1
       sass: 1.57.1
       stylelint: 14.15.0
       stylelint-config-css-modules: 4.1.0_stylelint@14.15.0
@@ -1498,8 +1498,8 @@ packages:
     resolution: {integrity: sha512-OeLyBKBQoT265f5G9biReijeP8mBxNFwY7ZUu1dKL+YzqpG5q5z7J/N1eT8aWyKuhyDTiUHuKm5l+oIVzbtrjw==}
     dev: true
 
-  /@tanstack/react-query/4.22.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-P9o+HjG42uB/xHR6dMsJaPhtZydSe4v0xdG5G/cEj1oHZAXelMlm67/rYJNQGKgBamKElKogj+HYGF+NY2yHYg==}
+  /@tanstack/react-query/4.22.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5yBsXn+ddlPvfxCHrklATOnz/y72uOinect69DyUcGkYcvjh2wfkUPWAO+s/e7wDW2At8QEeRmkuwjKLH4vO6g==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -7220,8 +7220,8 @@ packages:
       estree-walker: 0.6.1
     dev: true
 
-  /rollup/3.10.0:
-    resolution: {integrity: sha512-JmRYz44NjC1MjVF2VKxc0M1a97vn+cDxeqWmnwyAF4FvpjK8YFdHpaqvQB+3IxCvX05vJxKZkoMDU8TShhmJVA==}
+  /rollup/3.10.1:
+    resolution: {integrity: sha512-3Er+yel3bZbZX1g2kjVM+FW+RUWDxbG87fcqFM5/9HbPCTpbVp6JOLn7jlxnNlbu7s/N/uDA4EV/91E2gWnxzw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
