@@ -20,7 +20,8 @@
     "esModuleInterop": true,
     "declaration": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@site/*": ["./site/*"]
     },
     "noUncheckedIndexedAccess": true
   },
