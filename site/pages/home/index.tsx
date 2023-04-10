@@ -3,13 +3,17 @@ import { Button } from '@/components/Button';
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import { waitFor } from '@powerfulyang/utils';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
 
-  const mutaion = useMutation({
+  const mutation = useMutation({
     mutationFn: () => {
       return waitFor(5000);
+    },
+    onSuccess: () => {
+      setOpen(false);
     },
   });
 
@@ -44,7 +48,13 @@ const Home = () => {
           >
             Cancel
           </Button>
-          <Button appearance="primary">{`Yes, I'm sure`}</Button>
+          <Button
+            loading={mutation.isLoading}
+            onClick={() => {
+              mutation.mutate();
+            }}
+            appearance="primary"
+          >{`Yes, I'm sure`}</Button>
         </div>
       </Dialog>
     </div>

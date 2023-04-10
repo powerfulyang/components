@@ -22,11 +22,12 @@ export const Area: FC<CurveProps> = ({ dataKey, baseDataKey, ...props }) => {
   const path = useMemo(() => {
     if (xAxis.scale && yAxis.scale && xAxis.dataKey) {
       const tmp = area(
-        (d) => xAxis.scale?.(d[xAxis.dataKey]) || 0,
-        (d) => yAxis.scale?.(d[dataKey]) || 0,
-        (d) => yAxis.scale?.((baseDataKey && d[baseDataKey]) || 0) || 0,
+        // @ts-ignore
+        (d) => yAxis.scale?.(d[dataKey]) ?? 0,
+        // @ts-ignore
+        (d) => yAxis.scale?.(d[baseDataKey] ?? 0) ?? 0,
       ).curve(d3.curveNatural)(data);
-      return tmp || '';
+      return tmp ?? '';
     }
     return '';
   }, [baseDataKey, data, dataKey, xAxis, yAxis]);
