@@ -1,7 +1,9 @@
+import type { HTMLMotionProps } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { css } from '@emotion/react';
+import type { FC } from 'react';
 
-export type DialogOverlayProps = {};
+export type DialogOverlayProps = HTMLMotionProps<'div'>;
 
 const variants = {
   initial: {
@@ -15,7 +17,7 @@ const variants = {
   },
 };
 
-export const DialogOverlay = (props: DialogOverlayProps) => {
+export const DialogOverlay: FC<DialogOverlayProps> = (props) => {
   return (
     <motion.div
       variants={variants}

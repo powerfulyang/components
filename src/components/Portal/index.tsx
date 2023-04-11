@@ -1,18 +1,13 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react';
-import { forwardRef } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-export type PortalProps = PropsWithChildren<
-  {
-    container?: HTMLElement | null;
-  } & HTMLAttributes<HTMLDivElement>
->;
+export type PortalProps = PropsWithChildren<{
+  container?: HTMLElement | null;
+}>;
 
-export const Portal = forwardRef<HTMLDivElement, PortalProps>(
-  (props: PortalProps, forwardedRef) => {
-    const { container = globalThis?.document?.body, ...portalProps } = props;
-    return container ? createPortal(<div {...portalProps} ref={forwardedRef} />, container) : null;
-  },
-);
+export const Portal: FC<PortalProps> = (props) => {
+  const { container = globalThis?.document?.body, children } = props;
+  return container ? createPortal(children, container) : null;
+};
 
 Portal.displayName = 'Portal';

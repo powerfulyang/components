@@ -7,6 +7,7 @@ import { GlobalCSS } from '@/styles/GlobalCSS';
 import { css, Global, ThemeProvider } from '@emotion/react';
 import { theme } from '@/context/theme';
 import { router } from '@site/routes';
+import { Toaster } from '@/components/Toaster';
 
 const appCSS = css`
   html,
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
+      <Toaster />
     </ThemeProvider>
   </React.StrictMode>,
 );

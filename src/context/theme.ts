@@ -24,5 +24,5 @@ declare module '@emotion/react' {
 
 export const useTheme = () => {
   const contextTheme = emotionUseTheme();
-  return contextTheme ? theme : contextTheme;
+  return contextTheme ?? theme;
 };

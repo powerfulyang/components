@@ -1,19 +1,23 @@
-import type { MouseEvent, ReactElement } from 'react';
-import React, { cloneElement, forwardRef, useCallback } from 'react';
+import type { MouseEvent, PropsWithChildren, ReactElement } from 'react';
+import { cloneElement, forwardRef, useCallback } from 'react';
 import RippleEffect from '@/components/RippleEffect';
 import { Icon } from '@/components/Icon';
 import { ClassNames, css, keyframes } from '@emotion/react';
 import classNames from 'classnames';
 import { useTheme } from '@/context/theme';
+import type { HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  ripple?: boolean;
-  appearance?: 'primary' | 'secondary' | 'error' | 'default';
-  ghost?: boolean;
-  rounded?: boolean;
-  icon?: ReactElement;
-  loading?: boolean;
-};
+export type ButtonProps = PropsWithChildren<
+  HTMLMotionProps<'button'> & {
+    ripple?: boolean;
+    appearance?: 'primary' | 'secondary' | 'error' | 'default';
+    ghost?: boolean;
+    rounded?: boolean;
+    icon?: ReactElement;
+    loading?: boolean;
+  }
+>;
 
 const spin = keyframes`
   0% {
@@ -56,7 +60,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const theme = useTheme();
 
     return (
-      <button
+      <motion.button
+        layout
         type="button"
         {...props}
         ref={ref}
@@ -132,7 +137,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         </ClassNames>
         {children}
         {ripple && canClick && <RippleEffect />}
-      </button>
+      </motion.button>
     );
   },
 );

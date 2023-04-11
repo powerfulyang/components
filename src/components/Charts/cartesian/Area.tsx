@@ -23,9 +23,11 @@ export const Area: FC<CurveProps> = ({ dataKey, baseDataKey, ...props }) => {
     if (xAxis.scale && yAxis.scale && xAxis.dataKey) {
       const tmp = area(
         // @ts-ignore
+        (d) => xAxis.scale?.(d[xAxis.dataKey]) ?? 0,
+        // @ts-ignore
         (d) => yAxis.scale?.(d[dataKey]) ?? 0,
         // @ts-ignore
-        (d) => yAxis.scale?.(d[baseDataKey] ?? 0) ?? 0,
+        (d) => yAxis.scale?.(baseDataKey ?? d[baseDataKey] ?? 0) ?? 0,
       ).curve(d3.curveNatural)(data);
       return tmp ?? '';
     }

@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { waitFor } from '@powerfulyang/utils';
+import { toast } from '@/components/Toaster';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -17,12 +18,33 @@ const Home = () => {
     },
   });
 
+  let i = 0;
+
   return (
-    <div>
+    <div
+      css={css`
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+      `}
+    >
       <Button appearance="primary" onClick={() => setOpen(true)}>
         Open Dialog
       </Button>
-      <Dialog open={open}>
+      <Button
+        appearance="primary"
+        onClick={() => {
+          toast.success(`hello world ${++i}`);
+        }}
+      >
+        Open Toaster
+      </Button>
+      <Dialog
+        open={open}
+        onClose={() => {
+          setOpen(false);
+        }}
+      >
         <h2>Lorem ipsum</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero. Aenean
@@ -45,6 +67,7 @@ const Home = () => {
               color: #0ebeff;
             `}
             onClick={() => setOpen(false)}
+            autoFocus
           >
             Cancel
           </Button>
