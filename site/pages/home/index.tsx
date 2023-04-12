@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { waitFor } from '@powerfulyang/utils';
 import { toast } from '@/components/Toaster';
+import { Popover } from '@/components/Popover';
+import { Divider } from '@/components/Divider';
+import { Tab, Tabs } from '@/components/Tabs';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -20,12 +23,17 @@ const Home = () => {
 
   let i = 0;
 
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const [activeTabKey, setActiveTabKey] = useState<string>();
+
   return (
     <div
       css={css`
         padding: 20px;
         display: flex;
         gap: 20px;
+        flex-wrap: wrap;
       `}
     >
       <Button appearance="primary" onClick={() => setOpen(true)}>
@@ -34,7 +42,8 @@ const Home = () => {
       <Button
         appearance="primary"
         onClick={() => {
-          toast.success(`hello world ${++i}`);
+          i += 1;
+          toast.success(`hello world ${i}`);
         }}
       >
         Open Toaster
@@ -80,6 +89,34 @@ const Home = () => {
           >{`Yes, I'm sure`}</Button>
         </div>
       </Dialog>
+      <Button
+        appearance="primary"
+        onClick={(e) => {
+          setAnchorEl(e.currentTarget);
+        }}
+      >
+        Open Popover
+      </Button>
+      <Popover
+        open={!!anchorEl}
+        anchorEl={anchorEl}
+        onClose={() => {
+          setAnchorEl(null);
+        }}
+      >
+        Popover Content
+      </Popover>
+      <Divider />
+      <Tabs
+        activeTabKey={activeTabKey}
+        onChange={(tabKey) => {
+          setActiveTabKey(tabKey);
+        }}
+      >
+        <Tab tabKey="1">Tab 1</Tab>
+        <Tab tabKey="2">Tab 2</Tab>
+        <Tab tabKey="3">Tab 3</Tab>
+      </Tabs>
     </div>
   );
 };

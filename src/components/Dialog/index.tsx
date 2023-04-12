@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Portal } from '@/components/Portal';
 import { DialogOverlay } from '@/components/Dialog/DialogOverlay';
 import type { MotionProps, Variants } from 'framer-motion';
@@ -17,6 +17,10 @@ type DialogProps = {
    * 点击遮罩层是否关闭
    */
   closeOnOverlayClick?: boolean;
+  /**
+   * escape 键是否关闭
+   */
+  closeOnEscape?: boolean;
 } & MotionProps;
 
 const variants: Variants = {
@@ -47,6 +51,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   top,
   left,
   closeOnOverlayClick = true,
+  closeOnEscape = true,
   ...props
 }) => {
   const topOffset = useMemo(() => {
@@ -62,6 +67,22 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
     }
     return left ?? '50%';
   }, [left]);
+
+  // closeOnEscape
+  useEffect(() => {
+    if (open && closeOnEscape) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose?.();
+        }
+      };
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+    return () => {};
+  }, [open, closeOnEscape, onClose]);
 
   return (
     <Portal>
