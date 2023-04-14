@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
+    "lib": ["DOM", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "ESNext"],
     "sourceMap": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
@@ -24,5 +25,6 @@
     },
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "site/**/*.ts", "site/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "site/**/*.ts", "site/**/*.tsx"],
+  "exclude": ["node_modules"]
 }

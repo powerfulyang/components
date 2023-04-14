@@ -7,7 +7,7 @@ const moduleNameMapper = pathsToModuleNameMapper(tsconfig.compilerOptions.paths,
 
 const esModules = ['d3', 'internmap', 'delaunator', 'robust-predicates'].join('|');
 
-/** @type {import('@jest/types').Config.InitialOptions} */
+/** @type {import('jest').Config} */
 module.exports = {
   moduleNameMapper: {
     ...moduleNameMapper,
