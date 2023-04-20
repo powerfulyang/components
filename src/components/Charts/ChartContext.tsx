@@ -1,5 +1,4 @@
 import React from 'react';
-import 'immer';
 import { atomWithImmer } from 'jotai-immer';
 import type * as d3 from 'd3';
 

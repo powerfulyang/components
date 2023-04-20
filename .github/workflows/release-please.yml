@@ -1,11 +1,19 @@
+name: release-please
+
 on:
   push:
     branches:
       - master
-name: release-please
+
 jobs:
   release-please:
-    runs-on: ubuntu-latest
+    name: release-please
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: [lts/*]
+        os: [ubuntu-latest]
+
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
@@ -16,14 +24,25 @@ jobs:
         # these if statements ensure that a publication only occurs when
         # a new release is created:
         if: ${{ steps.release.outputs.release_created }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: ${{ matrix.node_version }}
         if: ${{ steps.release.outputs.release_created }}
-      - run: npm i
+      - run: pnpm i
         if: ${{ steps.release.outputs.release_created }}
-      - name: login
+      - name: npm login
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > ~/.npmrc
         if: ${{ steps.release.outputs.release_created }}
-      - run: npm publish
+      - run: pnpm publish
+        if: ${{ steps.release.outputs.release_created }}
+      - run: pnpm run deploy:site
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
         if: ${{ steps.release.outputs.release_created }}

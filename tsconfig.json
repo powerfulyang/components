@@ -25,6 +25,13 @@
     },
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "site/**/*.ts", "site/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts",
+    "site/**/*.ts",
+    "site/**/*.tsx",
+    ".jest/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

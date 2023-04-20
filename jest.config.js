@@ -18,9 +18,23 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.ts'],
   transform: {
-    '^.+\\.(ts|tsx)$': '@swc/jest',
-    '.js$': '@swc/jest',
+    '.*\\.(tsx?|jsx?)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          transform: {
+            react: {
+              runtime: 'automatic',
+              importSource: '@emotion/react',
+            },
+          },
+        },
+      },
+    ],
   },
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],
+  snapshotSerializers: [
+    '@emotion/jest/serializer' /* if needed other snapshotSerializers should go here */,
+  ],
 };

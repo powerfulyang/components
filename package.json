@@ -15,7 +15,6 @@
   ],
   "main": "dist/cjs/index.cjs",
   "module": "dist/es/index.mjs",
-  "style": "dist/es/index.css",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "exports": {
@@ -23,12 +22,6 @@
       "import": "./dist/es/index.mjs",
       "require": "./dist/cjs/index.cjs",
       "types": "./dist/types/index.d.ts"
-    },
-    "./dist/es/index.css": {
-      "style": "./dist/es/index.css"
-    },
-    "./dist/cjs/index.css": {
-      "style": "./dist/cjs/index.css"
     }
   },
   "scripts": {
@@ -38,60 +31,54 @@
     "build": "run-p build:*",
     "build:source": "rollup -c",
     "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
-    "ts-check": "tsc --noEmit",
-    "postprepare": "husky install",
+    "tsc-check": "tsc --noEmit",
+    "prepare": "husky install",
     "test": "jest",
     "precommit": "lint-staged",
     "prepublishOnly": "npm run build",
     "dev": "vite",
-    "build:site": "cross-env SITE=true vite build",
+    "deploy:site": "cross-env SITE=true vite build",
     "test:update:snapshot": "jest --updateSnapshot"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "peerDependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@powerfulyang/hooks": "workspace:*",
-    "@powerfulyang/utils": "workspace:*",
-    "classnames": "^2.3.2",
-    "framer-motion": "^10.11.2",
-    "immer": "^9.0.21",
-    "jotai": "^2.0.4",
-    "jotai-immer": "^0.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "react-dom": "^18.2.0"
   },
   "optionalDependencies": {
     "d3": "^7.8.4"
   },
-  "devDependencies": {
+  "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@powerfulyang/hooks": "1.4.0",
-    "@powerfulyang/lint": "3.1.3",
-    "@powerfulyang/utils": "1.9.2",
+    "@powerfulyang/hooks": "^1.5.0",
+    "@powerfulyang/utils": "^1.10.0",
+    "classnames": "^2.3.2",
+    "framer-motion": "^10.12.4",
+    "jotai": "^2.0.4",
+    "jotai-immer": "^0.2.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@emotion/jest": "11.10.5",
+    "@jest/globals": "29.5.0",
+    "@powerfulyang/lint": "3.2.1",
     "@rollup/plugin-typescript": "11.1.0",
     "@rollup/plugin-url": "8.0.1",
-    "@tanstack/react-query": "4.29.2",
+    "@tanstack/react-query": "4.29.3",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
     "@types/d3": "7.4.0",
+    "@types/node": "18.15.12",
+    "@types/react": "18.0.37",
+    "@types/react-dom": "18.0.11",
+    "@types/testing-library__jest-dom": "5.14.5",
     "@vitejs/plugin-react": "3.1.0",
-    "classnames": "2.3.2",
-    "framer-motion": "10.12.2",
-    "immer": "9.0.21",
-    "jotai": "2.0.4",
-    "jotai-immer": "^0.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "expect": "29.5.0",
     "react-router-dom": "6.10.0",
-    "reflect-metadata": "0.1.13",
-    "rxjs": "7.8.0",
     "typescript": "5.0.4",
-    "vite": "4.2.1"
+    "vite": "4.3.0"
   }
 }

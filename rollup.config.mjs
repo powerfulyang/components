@@ -1,8 +1,14 @@
 import url from '@rollup/plugin-url';
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json' assert { type: 'json' };
+import { readFileSync } from 'node:fs';
 
-const pkgDeps = Object.keys({ ...pkg.optionalDependencies, ...pkg.peerDependencies });
+const str = readFileSync('package.json', 'utf8');
+const pkg = JSON.parse(str);
+const pkgDeps = Object.keys({
+  ...pkg.optionalDependencies,
+  ...pkg.peerDependencies,
+  ...pkg.dependencies,
+});
 
 export default {
   input: 'src/index.tsx',

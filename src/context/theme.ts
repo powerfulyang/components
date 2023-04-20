@@ -1,5 +1,6 @@
 import colors from '@/colors';
 import { useTheme as emotionUseTheme } from '@emotion/react';
+import { isEmptyObject } from '@powerfulyang/utils';
 
 export const theme = {
   colors: {
@@ -24,5 +25,5 @@ declare module '@emotion/react' {
 
 export const useTheme = () => {
   const contextTheme = emotionUseTheme();
-  return contextTheme ?? theme;
+  return isEmptyObject(contextTheme) ? theme : contextTheme;
 };

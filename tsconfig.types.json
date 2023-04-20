@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "./dist/types",
     "emitDeclarationOnly": true,
     "declaration": true
-  }
+  },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx"]
 }
