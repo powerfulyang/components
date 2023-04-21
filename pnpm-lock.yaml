@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@powerfulyang/hooks':
-    specifier: 1.5.2
-    version: 1.5.2(react@18.2.0)
+    specifier: 1.5.1
+    version: 1.5.1(react@18.2.0)
   '@powerfulyang/utils':
     specifier: 1.10.0
     version: 1.10.0
@@ -1655,8 +1655,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@powerfulyang/hooks@1.5.2(react@18.2.0):
-    resolution: {integrity: sha512-gpju3vJtJWcYif8jABMRPKcjUrFIhq60Wq9U+dLT8SJ65IBQyq04g4U4ZxR4CD9mvhhavi1WXwMtA8aDopnX9Q==}
+  /@powerfulyang/hooks@1.5.1(react@18.2.0):
+    resolution: {integrity: sha512-PAA7QOkp8v8wiDVaZZMDDhHkM97V+xXH0waaUXzK9N7pEXXMxWQ2JcZroW0s+RXUIq9nr+FbN0HlP93by3Akjg==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
