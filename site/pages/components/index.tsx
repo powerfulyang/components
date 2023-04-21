@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import type { FC } from 'react';
-import { ButtonComponents } from '../../components/Button';
+import { ButtonComponents } from '@site/components/Button';
 
 export const Components: FC = () => {
   return (

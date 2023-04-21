@@ -5,7 +5,7 @@ const moduleNameMapper = pathsToModuleNameMapper(tsconfig.compilerOptions.paths,
   prefix: '<rootDir>/',
 });
 
-const esModules = ['d3', 'internmap', 'delaunator', 'robust-predicates'].join('|');
+const esModules = [].join('|');
 
 /** @type {import('jest').Config} */
 module.exports = {
