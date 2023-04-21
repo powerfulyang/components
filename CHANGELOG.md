@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/powerfulyang/components/compare/v1.7.0...v1.7.1) (2023-04-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @powerfulyang/hooks ([9d152ae](https://github.com/powerfulyang/components/commit/9d152ae33c6962a56b24bcd1fc8beff6b3918324))
+
 ## [1.7.0](https://github.com/powerfulyang/components/compare/v1.6.1...v1.7.0) (2023-04-21)
 
 
