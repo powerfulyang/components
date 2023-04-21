@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.7.0](https://github.com/powerfulyang/components/compare/v1.6.1...v1.7.0) (2023-04-21)
+
+
+### Features
+
+* build components ([131f4b9](https://github.com/powerfulyang/components/commit/131f4b9c6de85acb8d1e966db4f84a41c3f8cf0e))
+* code clean ([bca6845](https://github.com/powerfulyang/components/commit/bca6845a8db1c82d5e59633055a83fc5cf67025d))
+* **deps:** update dependency @powerfulyang/hooks ([863e0dc](https://github.com/powerfulyang/components/commit/863e0dc854b89479bbb53ecc8d5269feecae117c))
+* dialog ([702f572](https://github.com/powerfulyang/components/commit/702f572258f27367403069783d52df50719eb9e4))
+* react-router ([5a8c33f](https://github.com/powerfulyang/components/commit/5a8c33f96dc7712abb331bbbae591f32547ba2e1))
+* styled-components ([bcb3e52](https://github.com/powerfulyang/components/commit/bcb3e5230dfcf5c36d24734cf98031cdef4b08c3))
+* tabs ([f00c016](https://github.com/powerfulyang/components/commit/f00c016cbbb136e0d41cd3c927e8add416df8803))
+
+
+### Bug Fixes
+
+* pnpm .npmrc expose dependency ([fa910de](https://github.com/powerfulyang/components/commit/fa910defd7506d2903731b85e2a895a0ef022152))
+* vite ([5e63e53](https://github.com/powerfulyang/components/commit/5e63e53c23c5e6f83b4a6f19ac5b6516ca4ca648))
+
 ## [1.6.1](https://github.com/powerfulyang/components/compare/v1.6.0...v1.6.1) (2022-12-20)
 
 
