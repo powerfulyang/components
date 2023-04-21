@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.3](https://github.com/powerfulyang/components/compare/v1.7.2...v1.7.3) (2023-04-21)
+
+
+### Bug Fixes
+
+* **deps:** remove d3 ([1bc8047](https://github.com/powerfulyang/components/commit/1bc80471ecc95ac63e7b3f6e90c3c687818965c4))
+
 ## [1.7.2](https://github.com/powerfulyang/components/compare/v1.7.1...v1.7.2) (2023-04-21)
 
 
