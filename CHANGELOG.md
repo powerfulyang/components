@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.2](https://github.com/powerfulyang/components/compare/v1.7.1...v1.7.2) (2023-04-21)
+
+
+### Bug Fixes
+
+* **deps:** remove @emotion/styled ([0345e94](https://github.com/powerfulyang/components/commit/0345e94ed0f5d03205dc8c4dd16865f1b0c7c7cc))
+
 ## [1.7.1](https://github.com/powerfulyang/components/compare/v1.7.0...v1.7.1) (2023-04-21)
 
 
