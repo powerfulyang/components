@@ -2,20 +2,13 @@
   "name": "@powerfulyang/components",
   "version": "1.7.0",
   "description": "react-components",
-  "author": "powerfulyang",
-  "license": "MIT",
-  "repository": "https://github.com/powerfulyang/components.git",
   "homepage": "https://github.com/powerfulyang/components#readme",
   "bugs": {
     "url": "https://github.com/powerfulyang/components/issues"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/es/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/powerfulyang/components.git",
+  "license": "MIT",
+  "author": "powerfulyang",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -24,36 +17,34 @@
       "types": "./dist/types/index.d.ts"
     }
   },
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/es/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "prettier": "prettier --write \"src/**/*.{tsx,ts,scss}\"",
-    "lint:js": "eslint --fix --ext .ts,.tsx ./src",
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
     "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
-    "tsc-check": "tsc --noEmit",
-    "prepare": "husky install",
-    "test": "jest",
-    "precommit": "lint-staged",
-    "prepublishOnly": "npm run build",
-    "dev": "vite",
     "deploy:site": "cross-env SITE=true vite build",
-    "test:update:snapshot": "jest --updateSnapshot"
+    "dev": "vite",
+    "lint:js": "eslint --fix --ext .ts,.tsx ./src",
+    "precommit": "lint-staged",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier --write \"src/**/*.{tsx,ts,scss}\"",
+    "test": "jest",
+    "test:update:snapshot": "jest --updateSnapshot",
+    "tsc-check": "tsc --noEmit"
   },
   "browserslist": [
     "last 2 versions"
   ],
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "optionalDependencies": {
-    "d3": "7.8.4"
-  },
   "dependencies": {
-    "@emotion/react": "11.10.6",
-    "@emotion/styled": "11.10.6",
-    "@powerfulyang/hooks": "1.5.1",
+    "@powerfulyang/hooks": "1.5.2",
     "@powerfulyang/utils": "1.10.0",
     "classnames": "2.3.2",
     "framer-motion": "10.12.4",
@@ -63,6 +54,8 @@
   },
   "devDependencies": {
     "@emotion/jest": "11.10.5",
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
     "@jest/globals": "29.5.0",
     "@powerfulyang/lint": "3.2.1",
     "@rollup/plugin-typescript": "11.1.0",
@@ -82,5 +75,14 @@
     "react-router-dom": "6.10.0",
     "typescript": "5.0.4",
     "vite": "4.3.1"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "optionalDependencies": {
+    "d3": "7.8.4"
   }
 }
