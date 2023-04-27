@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@powerfulyang/hooks": "1.5.2",
-    "@powerfulyang/utils": "1.10.0",
+    "@powerfulyang/utils": "1.10.2",
     "classnames": "2.3.2",
     "framer-motion": "10.12.4",
     "jotai": "2.0.4",
