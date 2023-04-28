@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.4](https://github.com/powerfulyang/components/compare/v1.7.3...v1.7.4) (2023-04-28)
+
+
+### Bug Fixes
+
+* theme provider ([e0c16d6](https://github.com/powerfulyang/components/commit/e0c16d60a1da860f4d724afbb19573bb6d16f72c))
+
 ## [1.7.3](https://github.com/powerfulyang/components/compare/v1.7.2...v1.7.3) (2023-04-21)
 
 
