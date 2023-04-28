@@ -4,10 +4,12 @@ import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NormalizeCSS } from '@/styles/NormalizeCSS';
 import { GlobalCSS } from '@/styles/GlobalCSS';
-import { css, Global, ThemeProvider } from '@emotion/react';
-import { theme } from '@/context/theme';
+import { css, Global } from '@emotion/react';
+import { createTheme, ThemeProvider } from '@mui/material';
 import { router } from '@site/routes';
 import { Toaster } from '@/components/Toaster';
+
+const theme = createTheme();
 
 const appCSS = css`
   html,

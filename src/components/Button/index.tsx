@@ -4,14 +4,14 @@ import RippleEffect from '@/components/RippleEffect';
 import { Icon } from '@/components/Icon';
 import { ClassNames, css, keyframes } from '@emotion/react';
 import classNames from 'classnames';
-import { useTheme } from '@/context/theme';
 import type { HTMLMotionProps } from 'framer-motion';
 import { motion } from 'framer-motion';
+import { useTheme } from '@mui/material';
 
 export type ButtonProps = PropsWithChildren<
   HTMLMotionProps<'button'> & {
     ripple?: boolean;
-    appearance?: 'primary' | 'secondary' | 'error' | 'default';
+    appearance?: 'primary' | 'secondary' | 'error' | 'info';
     ghost?: boolean;
     rounded?: boolean;
     icon?: ReactElement;
@@ -36,7 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       onClick,
       ripple = true,
-      appearance = 'default',
+      appearance = 'info',
       rounded = false,
       icon,
       loading = false,
@@ -58,12 +58,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     const theme = useTheme();
+    const color = theme.palette[appearance].main;
 
     return (
       <motion.button
-        layout
         type="button"
-        {...props}
         ref={ref}
         css={[
           css({
@@ -77,17 +76,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             cursor: loading ? 'not-allowed' : 'pointer',
             border: 'none',
             borderRadius: rounded ? '9999px' : '0.5rem',
-            backgroundColor: theme.colors.transparent,
+            backgroundColor: 'transparent',
           }),
           css`
             &:disabled,
             &[data-loading='true'] {
               cursor: not-allowed;
               opacity: 0.5;
-              background-color: ${theme.colors.disabled};
+              background-color: ${theme.palette.grey['400']};
             }
             &:not(:disabled) {
-              background-color: ${theme.colors[appearance]};
+              background-color: ${color};
             }
             &:not(:disabled):not([data-loading='true']):hover {
               filter: brightness(1.1);
@@ -96,14 +95,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           ghost &&
             css`
               &:not(:disabled) {
-                border: 1px solid ${theme.colors[appearance]};
-                background-color: ${theme.colors.transparent};
+                border: 1px solid ${color};
+                background-color: transparent;
               }
             `,
         ]}
         className={className}
         onClick={handleClick}
         data-loading={loading}
+        {...props}
       >
         <ClassNames>
           {({ css: CSS }) => {

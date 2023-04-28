@@ -4,7 +4,6 @@ import React, { memo, useCallback, useMemo } from 'react';
 import { useImmer } from '@powerfulyang/hooks';
 import { debounce } from '@powerfulyang/utils';
 import { css, keyframes } from '@emotion/react';
-import { useTheme } from '@/context/theme';
 
 interface Ripple {
   x: number;
@@ -33,7 +32,6 @@ const ripple = keyframes`
 
 const RippleEffect: FC = () => {
   const [ripples, setRipples] = useImmer<Ripple[]>([]);
-  const theme = useTheme();
 
   const cleanUpDebounced = useMemo(() => {
     return debounce(() => {
@@ -77,7 +75,7 @@ const RippleEffect: FC = () => {
         & > span {
           position: absolute;
           display: block;
-          background-color: ${theme.colors.rippleColor};
+          background-color: rgb(0 0 0 / 8%);
           border-radius: 50%;
           transform: scale(0);
           animation: ${ripple} 700ms;

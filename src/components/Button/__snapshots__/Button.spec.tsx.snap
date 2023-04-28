@@ -47,11 +47,11 @@ exports[`Button snapshot 1`] = `
 .emotion-0[data-loading='true'] {
   cursor: not-allowed;
   opacity: 0.5;
-  background-color: #9ca3af;
+  background-color: #bdbdbd;
 }
 
 .emotion-0:not(:disabled) {
-  background-color: transparent;
+  background-color: #0288d1;
 }
 
 .emotion-0:not(:disabled):not([data-loading='true']):hover {
@@ -81,7 +81,6 @@ exports[`Button snapshot 1`] = `
   <button
     class="emotion-0"
     data-loading="false"
-    data-projection-id="2"
     type="button"
   >
     Button
