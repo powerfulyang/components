@@ -18,19 +18,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.ts'],
   transform: {
-    '.*\\.(tsx?|jsx?)$': [
-      '@swc/jest',
-      {
-        jsc: {
-          transform: {
-            react: {
-              runtime: 'automatic',
-              importSource: '@emotion/react',
-            },
-          },
-        },
-      },
-    ],
+    '.*\\.(tsx?|jsx?)$': '@swc/jest',
   },
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "sourceMaps": true,
+  "module": {
+    "type": "commonjs",
+    "strict": true
+  },
+  "jsc": {
+    "target": "esnext",
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true,
+      "react": {
+        "runtime": "automatic",
+        "importSource": "@emotion/react"
+      }
+    }
+  }
+}
