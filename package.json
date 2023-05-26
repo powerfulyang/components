@@ -75,7 +75,7 @@
     "react-hot-toast": "2.4.1",
     "react-router-dom": "6.11.1",
     "typescript": "5.0.4",
-    "vite": "4.3.5"
+    "vite": "4.3.9"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
