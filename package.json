@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@powerfulyang/hooks": "1.5.2",
-    "@powerfulyang/utils": "1.10.2",
+    "@powerfulyang/utils": "1.11.2",
     "classnames": "2.3.2",
     "framer-motion": "10.12.9",
     "jotai": "2.1.0",
@@ -58,7 +58,7 @@
     "@emotion/styled": "11.11.0",
     "@jest/globals": "29.5.0",
     "@mui/material": "5.12.3",
-    "@powerfulyang/lint": "3.2.1",
+    "@powerfulyang/lint": "3.3.0",
     "@rollup/plugin-typescript": "11.1.0",
     "@rollup/plugin-url": "8.0.1",
     "@tanstack/react-query": "4.29.5",
