@@ -17,8 +17,7 @@
       "legacyDecorator": true,
       "decoratorMetadata": true,
       "react": {
-        "runtime": "automatic",
-        "importSource": "@emotion/react"
+        "runtime": "automatic"
       }
     }
   }

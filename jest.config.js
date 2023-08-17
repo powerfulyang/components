@@ -22,7 +22,4 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],
-  snapshotSerializers: [
-    '@emotion/jest/serializer' /* if needed other snapshotSerializers should go here */,
-  ],
 };
